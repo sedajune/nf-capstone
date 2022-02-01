@@ -10,7 +10,7 @@ const Page = ({ data, error }) => {
 				<title key="title">My Project</title>
 				<meta key="description" name="description" content="This is my project" />
 			</Head>
-			<h1>Home</h1>
+			<h1>Plant Buddy</h1>
 			{error && <div>{error.message}</div>}
 			{data && (
 				<pre>

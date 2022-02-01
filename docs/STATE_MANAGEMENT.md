@@ -7,7 +7,7 @@ tackle these challenges.
 ## KISS
 
 We follow the [KISS principle](https://en.wikipedia.org/wiki/KISS_principle). This also counts for
-state handling. Over the past years many great concepts have been published. We found 
+state handling. Over the past years many great concepts have been published. We found
 [this article](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options) very
 helpful, when making decisions and designing our state management strategy.
 
@@ -28,28 +28,28 @@ it.
 import React, { useState } from "react";
 
 const Checkbox = () => {
-	const [checked, setChecked] = useState(false);
-	return (
-		<label>
-			<input
-				type="checkbox"
-				checked={checked}
-				onChange={(event_) => {
-					setChecked(event_.target.checked);
-				}}
-			/>
-			<div>State: {checked ? "ON" : "OFF"}</div>
-		</label>
-	);
+  const [checked, setChecked] = useState(false);
+  return (
+    <label>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={event_ => {
+          setChecked(event_.target.checked);
+        }}
+      />
+      <div>State: {checked ? "ON" : "OFF"}</div>
+    </label>
+  );
 };
 
 const App = () => {
-	return (
-		<>
-			<Checkbox />
-		</>
-	);
-}
+  return (
+    <>
+      <Checkbox />
+    </>
+  );
+};
 ```
 
 Step 2: Adding a default state
@@ -62,29 +62,29 @@ when we want to add a default state we can make use of React's
 import React, { useState } from "react";
 
 const Checkbox = ({ defaultChecked }) => {
-	const [checked, setChecked] = useState(defaultChecked);
-	return (
-		<label>
-			<input
-				type="checkbox"
-				checked={checked}
-				onChange={(event_) => {
-					setChecked(event_.target.checked);
-				}}
-			/>
-			<div>State: {checked ? "ON" : "OFF"}</div>
-		</label>
-	);
+  const [checked, setChecked] = useState(defaultChecked);
+  return (
+    <label>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={event_ => {
+          setChecked(event_.target.checked);
+        }}
+      />
+      <div>State: {checked ? "ON" : "OFF"}</div>
+    </label>
+  );
 };
 
 const App = () => {
-	return (
-		<>
-			<Checkbox />
-			<Checkbox	defaultChecked/>
-		</>
-	);
-}
+  return (
+    <>
+      <Checkbox />
+      <Checkbox defaultChecked />
+    </>
+  );
+};
 ```
 
 Step 3: Allowing outside control
@@ -92,7 +92,7 @@ Step 3: Allowing outside control
 When we build Software, we often want to have more control of our app's state. To allow this we can
 create a [controlled component](https://reactjs.org/docs/forms.html#controlled-components).
 
-Let's move our state to a 
+Let's move our state to a
 [Higher Order Component](https://reactjs.org/docs/higher-order-components.html). In our case this is
 the App.
 
@@ -100,34 +100,40 @@ the App.
 import React, { useState } from "react";
 
 const Checkbox = ({ checked, onChange }) => {
-	return (
-		<label>
-			<input
-				type="checkbox"
-				checked={checked}
-				onChange={(event_) => {
-					onChange(event_.target.checked);
-				}}
-			/>
-			<div>State: {checked ? "ON" : "OFF"}</div>
-		</label>
-	);
+  return (
+    <label>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={event_ => {
+          onChange(event_.target.checked);
+        }}
+      />
+      <div>State: {checked ? "ON" : "OFF"}</div>
+    </label>
+  );
 };
 
 const App = () => {
-	const [appState, setAppState] = useState(false);
+  const [appState, setAppState] = useState(false);
 
-	return (
-		<>
-			<Checkbox checked={appState} onChange={(checked) => {
-				setAppState(checked);
-			}}/>
-			<Checkbox checked={appState} onChange={(checked) => {
-				setAppState(checked);
-			}}/>
-		</>
-	);
-}
+  return (
+    <>
+      <Checkbox
+        checked={appState}
+        onChange={checked => {
+          setAppState(checked);
+        }}
+      />
+      <Checkbox
+        checked={appState}
+        onChange={checked => {
+          setAppState(checked);
+        }}
+      />
+    </>
+  );
+};
 ```
 
 Step 4: Building State Providers
@@ -138,88 +144,76 @@ machines, in our case we will add a [context](https://reactjs.org/docs/context.h
 state of our feature.
 
 ```tsx
-import React, {
-	createContext,
-	useCallback,
-	useContext,
-	useMemo,
-	useState
-} from "react";
+import React, { createContext, useCallback, useContext, useMemo, useState } from "react";
 
 const CheckboxContext = createContext();
 
 const CheckpoxProvider = ({ children }) => {
-	const [checked, setChecked] = useState(false);
-	const check = useCallback(() => {
-		setChecked(true);
-	}, []);
-	const uncheck = useCallback(() => {
-		setChecked(true);
-	}, []);
-	const toggle = useCallback((requestedState?: boolean) => {
-		if (typeof requestedState === "boolean") {
-			setChecked(requestedState);
-		} else {
-			setChecked((previousState) => !previousState);
-		}
-	}, []);
-	const context = useMemo(() => ({ checked, check, uncheck, toggle }), [
-		checked,
-		check,
-		uncheck,
-		toggle
-	]);
-	return (
-		<CheckboxContext.Provider value={context}>
-			{children}
-		</CheckboxContext.Provider>
-	);
+  const [checked, setChecked] = useState(false);
+  const check = useCallback(() => {
+    setChecked(true);
+  }, []);
+  const uncheck = useCallback(() => {
+    setChecked(true);
+  }, []);
+  const toggle = useCallback((requestedState?: boolean) => {
+    if (typeof requestedState === "boolean") {
+      setChecked(requestedState);
+    } else {
+      setChecked(previousState => !previousState);
+    }
+  }, []);
+  const context = useMemo(
+    () => ({ checked, check, uncheck, toggle }),
+    [checked, check, uncheck, toggle]
+  );
+  return <CheckboxContext.Provider value={context}>{children}</CheckboxContext.Provider>;
 };
 
 const useCheckbox = () => useContext(CheckboxContext);
 
 const Checkbox = ({ checked, onChange }) => {
-	const [localChecked, setLocalChecked] = useState(checked);
-	return (
-		<label>
-			<input
-				type="checkbox"
-				checked={checked}
-				onChange={(event_) => {
-					onChange(event_.target.checked);
-				}}
-			/>
-			<div>State: {checked ? "ON" : "OFF"}</div>
-		</label>
-	);
+  const [localChecked, setLocalChecked] = useState(checked);
+  return (
+    <label>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={event_ => {
+          onChange(event_.target.checked);
+        }}
+      />
+      <div>State: {checked ? "ON" : "OFF"}</div>
+    </label>
+  );
 };
 
 const Checkboxes = () => {
-	const { toggle, checked } = useCheckbox();
-	return (
-		<>
-			<Checkbox
-				checked={checked}
-				onChange={(requestedChecked) => {
-					toggle(requestedChecked);
-				}}
-			/>
-			<Checkbox
-				checked={checked}
-				onChange={(requestedChecked) => {
-					toggle(requestedChecked);
-				}}
-			/>
-		</>
-	);
+  const { toggle, checked } = useCheckbox();
+  return (
+    <>
+      <Checkbox
+        checked={checked}
+        onChange={requestedChecked => {
+          toggle(requestedChecked);
+        }}
+      />
+      <Checkbox
+        checked={checked}
+        onChange={requestedChecked => {
+          toggle(requestedChecked);
+        }}
+      />
+    </>
+  );
 };
 
 const App = () => {
-	return (
-		<CheckpoxProvider>
-			<Checkboxes />
-		</CheckpoxProvider>
-	);
+  return (
+    <CheckpoxProvider>
+      <Checkboxes />
+    </CheckpoxProvider>
+  );
 };
 ```
 
@@ -229,34 +223,35 @@ We added a context and decided to define a small state machine `CheckboxProvider
 [hook](https://reactjs.org/docs/hooks-reference.html) to allow easy access to the machine.
 
 We provide three callbacks with "common names".
-```tsx
-	const on = useCallback(() => {
-		/* activate */
-	}, []);
 
-	const off = useCallback(() => {
-		/* deactivate */
-	}, []);
-	
-	const toggle = useCallback((requestedState) => {
-		if (typeof requestedState === "boolean") {
-			/* satisfy request */
-		} else {
-			/* toggle */
-		}
-	}, []);
+```tsx
+const on = useCallback(() => {
+  /* activate */
+}, []);
+
+const off = useCallback(() => {
+  /* deactivate */
+}, []);
+
+const toggle = useCallback(requestedState => {
+  if (typeof requestedState === "boolean") {
+    /* satisfy request */
+  } else {
+    /* toggle */
+  }
+}, []);
 ```
 
 Common names allow us to easily understand how to operate different machines. We can also create the
 same machine to open or close a dialog, sidebar or similar. We would then use `open`, `close` and
-`toggle`. 
+`toggle`.
 
-When we want to operate several machines, we can simply rename the in our application or component.
+When we want to operate several machines, we can simply rename them in our application or component.
 
 ```tsx
-const {open: openModal, opened: isModalOpen} = useOpen();
-const {open: openDialog, opened: isDialogOpen} = useOpen();
-const {open: openSidebar, opened: isSidebarOpen} = useOpen();
+const { open: openModal, opened: isModalOpen } = useOpen();
+const { open: openDialog, opened: isDialogOpen } = useOpen();
+const { open: openSidebar, opened: isSidebarOpen } = useOpen();
 ```
 
 We renamed the callbacks to better communicate what we are changing. We also renamed the state and
@@ -270,23 +265,17 @@ communication. Speaking different languages can major cause issues, a very good 
 
 > An investigation attributed the failure to a measurement mismatch between two software systems: metric units by NASA and non-metric (imperial or "English") units by spacecraft builder Lockheed Martin.
 
-As you might have noticed, we also memoize our context via
+As you might have noticed, we also memorize our context via
 [`useMemo`](https://reactjs.org/docs/hooks-reference.html#usememo). This is very important since
 [object in javascript are unique](https://dmitripavlutin.com/how-to-compare-objects-in-javascript/),
 they would therefore change on each rendering cycle. Instead of building our own comparison utility,
-we can make use of React's memoization helpers.
+we can make use of React's memorization helpers.
 
 ```tsx
-const context = useMemo(() => ({ isOpen, open, close, toggle }), [
-	isOpen,
-	open,
-	close,
-	toggle
-]);
+const context = useMemo(() => ({ isOpen, open, close, toggle }), [isOpen, open, close, toggle]);
 ```
 
 ## Build something awesome, build with conscience
 
 We hope this lesson helped you to understand how to keep it simple, stupid, while still allowing for
 complex, big scale software. Don't overthink it, KISS 💋.
-
