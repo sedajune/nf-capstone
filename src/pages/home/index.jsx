@@ -6,10 +6,10 @@ const Page = () => {
 	return (
 		<Layout>
 			<Head>
-				<title key="title">About</title>
-				<meta key="description" name="description" content="About" />
+				<title key="title">home</title>
+				<meta key="description" name="description" content="Home" />
 			</Head>
-			<h1>About</h1>
+			<h1>Home</h1>
 		</Layout>
 	);
 };
