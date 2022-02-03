@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
-import Layout from "../organisms/layout";
+import Layout from "../../organisms/layout";
+import PlantForm from "../../organisms/forms";
 
 const Page = () => {
 	return (
@@ -10,6 +11,7 @@ const Page = () => {
 				<meta key="description" name="description" content="This is my capstone project" />
 			</Head>
 			<h1>Plant Buddy</h1>
+			<PlantForm></PlantForm>
 		</Layout>
 	);
 };
