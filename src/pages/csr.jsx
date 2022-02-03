@@ -4,7 +4,7 @@ import Layout from "../organisms/layout";
 import useGet from "../ions/hooks/fetch/get";
 
 const Page = () => {
-	const { data, loading, error } = useGet("https://rickandmortyapi.com/api/character/");
+	const { data, loading, error } = useGet("");
 
 	return (
 		<Layout>
