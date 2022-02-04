@@ -14,7 +14,7 @@ const Page = () => {
 			<Typography component="h1" variant="h3">
 				Plant Buddy
 			</Typography>
-			<PlantForm></PlantForm>
+			<PlantForm />
 		</Layout>
 	);
 };
