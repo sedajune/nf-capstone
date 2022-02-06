@@ -6,11 +6,12 @@ import Typography from "../atoms/typography";
 import Button from "../atoms/button";
 import { useRouter } from "next/router";
 
-const A = ({ children, className }) => {
+const PinBoard = ({ children, className }) => {
 	return <div className={className}>{children} </div>;
 };
 
-const B = styled(A)`
+const PinBoardStyled = styled(PinBoard);
+`
 	background: green;
 `;
 
@@ -18,7 +19,7 @@ const Page = () => {
 	const router = useRouter();
 
 	return (
-		<B>
+		<PinBoardStyled>
 			<Head>
 				<title key="title">home</title>
 				<meta key="description" name="description" content="Home" />
@@ -37,7 +38,7 @@ const Page = () => {
 				quality="100"
 				priority="true"
 			/>
-		</B>
+		</PinBoardStyled>
 	);
 };
 

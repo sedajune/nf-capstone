@@ -33,11 +33,6 @@ const PlantForm = () => {
 		},
 	});
 
-	// Remove before pushing, only for testing
-	/*useEffect(() => {
-		console.log("plantCards", plantCards);
-	}, [plantCards]); */
-
 	const onSubmit = data => {
 		setPlantCards(data);
 	};
