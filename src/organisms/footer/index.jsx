@@ -7,7 +7,6 @@ import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
 import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
 import ModeIcon from "@mui/icons-material/Mode";
 import Paper from "@mui/material/Paper";
-//import StyledIcons from "./atoms/icons/styled";
 
 const Footer = () => {
 	const [value, setValue] = React.useState(0);
@@ -23,7 +22,11 @@ const Footer = () => {
 							setValue(newValue);
 						}}
 					>
-						<BottomNavigationAction icon={<CottageRoundedIcon />} />
+						<BottomNavigationAction
+							/*button onClick = (() => {router.push("/main")})*/ icon={
+								<CottageRoundedIcon />
+							}
+						/>
 						<BottomNavigationAction icon={<EmojiNatureIcon />} />
 						<BottomNavigationAction icon={<EmojiObjectsIcon />} />
 						<BottomNavigationAction icon={<ModeIcon />} />
