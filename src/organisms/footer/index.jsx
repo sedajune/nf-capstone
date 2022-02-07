@@ -29,11 +29,7 @@ const Footer = () => {
 								<CottageRoundedIcon />
 							}
 						/>
-						<BottomNavigationAction
-							type="button"
-							onClick={() => router.push("/main")}
-							icon={<EmojiNatureIcon />}
-						/>
+						<BottomNavigationAction icon={<EmojiNatureIcon />} />
 						<BottomNavigationAction icon={<EmojiObjectsIcon />} />
 						<BottomNavigationAction icon={<ModeIcon />} />
 					</BottomNavigation>
