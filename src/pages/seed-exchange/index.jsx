@@ -1,27 +1,19 @@
 import Head from "next/head";
 import React from "react";
-import styled from "@emotion/styled";
-import Typography from "../../atoms/typography";
-
-const A = ({ children, className }) => {
-	return <div className={className}>{children} </div>;
-};
-
-const B = styled(A)`
-	background: green;
-`;
+import Layout from "../../organisms/layout";
+import Typography from "@mui/material/typography";
 
 const Page = () => {
 	return (
-		<B>
+		<Layout>
 			<Head>
-				<title key="title">home</title>
-				<meta key="description" name="description" content="Home" />
+				<title key="title">My Capstone Project</title>
+				<meta key="description" name="description" content="This is my capstone project" />
 			</Head>
-			<Typography component="h4" variant="h4">
-				Plant Buddy
+			<Typography component="h1" variant="h3">
+				Seed Exchange
 			</Typography>
-		</B>
+		</Layout>
 	);
 };
 
