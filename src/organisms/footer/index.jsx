@@ -7,9 +7,11 @@ import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
 import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
 import ModeIcon from "@mui/icons-material/Mode";
 import Paper from "@mui/material/Paper";
+import { useRouter } from "next/router";
 
 const Footer = () => {
 	const [value, setValue] = React.useState(0);
+	const router = useRouter();
 
 	return (
 		<footer>
@@ -27,7 +29,11 @@ const Footer = () => {
 								<CottageRoundedIcon />
 							}
 						/>
-						<BottomNavigationAction icon={<EmojiNatureIcon />} />
+						<BottomNavigationAction
+							type="button"
+							onClick={() => router.push("/main")}
+							icon={<EmojiNatureIcon />}
+						/>
 						<BottomNavigationAction icon={<EmojiObjectsIcon />} />
 						<BottomNavigationAction icon={<ModeIcon />} />
 					</BottomNavigation>

@@ -25,7 +25,7 @@ const Page = () => {
 			{plantCards.map(plant => {
 				return <PlantCard key={plant.id} {...plant} />;
 			})}
-			<PlantCard />
+
 			<br />
 		</Layout>
 	);

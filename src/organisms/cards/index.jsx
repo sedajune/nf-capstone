@@ -8,6 +8,7 @@ import Collapse from "@mui/material/Collapse";
 import Typography from "@mui/material/typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./styled";
+import Image from "next/image";
 
 const PlantCard = ({
 	description,
@@ -27,13 +28,16 @@ const PlantCard = ({
 
 	return (
 		<Card sx={{ maxWidth: 345 }}>
-			<CardHeader title={description} subheader="February 22nd, 2022" />
-			<CardMedia
-				component="img"
-				height="194"
-				image="./public/plantCardExample.jpg"
-				alt="garden"
+			<CardHeader title={description} />
+
+			<Image
+				src="https://images.unsplash.com/photo-1584479898061-15742e14f50d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+				alt="seedlings"
+				width="150vw"
+				height="150vw"
+				quality="100"
 			/>
+
 			<CardContent>
 				<Typography>{soilQuality}</Typography>
 			</CardContent>
