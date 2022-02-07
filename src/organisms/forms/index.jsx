@@ -36,8 +36,38 @@ const PlantForm = () => {
 		},
 	];
 
+	const soilQualities = [
+		{
+			value: "clay",
+			label: "clay",
+		},
+		{
+			value: "sandy",
+			label: "sandy",
+		},
+		{
+			value: "loamy",
+			label: "loamy",
+		},
+		{
+			value: "chalky",
+			label: "chalky",
+		},
+		{
+			value: "silty",
+			label: "silty",
+		},
+
+		{
+			value: "peaty",
+			label: "peaty",
+		},
+	];
+
 	const [spaceType, setSpaceType] = React.useState("");
 	const [open, setOpen] = React.useState(false);
+
+	const [soilType, setSoilType] = React.useState("");
 
 	const handleChange = event => {
 		setSpaceType(event.target.value);
@@ -47,11 +77,11 @@ const PlantForm = () => {
 		defaultValues: {
 			description: "",
 			contactInfo: "",
-			soilQuality: "",
+			soilQuality: {},
 			size: "",
 			location: "",
 			number: "",
-			spaceType: "",
+			spaceType: {},
 		},
 	});
 
@@ -128,12 +158,20 @@ const PlantForm = () => {
 					control={control}
 					render={({ field }) => (
 						<TextField
-							label="Soil quality"
-							variant="outlined"
-							size="normal"
-							margin="normal"
+							id="select-space"
+							select
+							label="Type of Soil"
+							value={soilType}
+							onChange={handleChange}
+							helperText="Please select your soil"
 							{...field}
-						/>
+						>
+							{soilQualities.map(option => (
+								<MenuItem key={option.value} value={option.value}>
+									{option.label}
+								</MenuItem>
+							))}
+						</TextField>
 					)}
 				/>
 				<Controller
@@ -163,6 +201,7 @@ const PlantForm = () => {
 							value={spaceType}
 							onChange={handleChange}
 							helperText="Please select your space"
+							{...field}
 						>
 							{plantSpaces.map(option => (
 								<MenuItem key={option.value} value={option.value}>
