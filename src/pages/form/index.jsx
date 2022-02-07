@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 import Layout from "../../organisms/layout";
 import PlantForm from "../../organisms/forms";
-import Typography from "../../atoms/typography";
+import Typography from "@mui/material/typography";
 
 const Page = () => {
 	return (

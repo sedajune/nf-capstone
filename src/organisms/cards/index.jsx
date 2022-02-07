@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
-import Typography from "../../atoms/typography";
+import Typography from "@mui/material/typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./styled";
 
@@ -35,7 +35,7 @@ const PlantCard = ({
 				alt="garden"
 			/>
 			<CardContent>
-				<Typography variant="body2">{soilQuality}</Typography>
+				<Typography>{soilQuality}</Typography>
 			</CardContent>
 			<CardActions disableSpacing>
 				<ExpandMore

@@ -2,16 +2,15 @@ import Head from "next/head";
 import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
-import Typography from "../atoms/typography";
+import Typography from "@mui/material/typography";
 import Button from "../atoms/button";
 import { useRouter } from "next/router";
 
-const PinBoard = ({ children, className }) => {
+const pinBoard = ({ children, className }) => {
 	return <div className={className}>{children} </div>;
 };
 
-const PinBoardStyled = styled(PinBoard);
-`
+const PinBoardStyled = styled(pinBoard)`
 	background: green;
 `;
 

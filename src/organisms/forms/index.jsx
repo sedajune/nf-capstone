@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,12 +7,10 @@ import Button from "../../atoms/button";
 import useStore from "../../ions/hooks/storeFormData";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-import { useRouter } from "next/router";
 
 const PlantForm = () => {
 	const plantCards = useStore(state => state.plantCards);
 	const setPlantCards = useStore(state => state.setPlantCard);
-	const router = useRouter();
 
 	const [type, setType] = React.useState("");
 	const [open, setOpen] = React.useState(false);

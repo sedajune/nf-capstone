@@ -1,7 +1,5 @@
-import React from "react";
-import styles from "./styles.module.css";
 // Variant: headline, footnote
-
+/*
 const typeVariants = {
 	h1: "h1",
 	h2: "h2",
@@ -18,7 +16,7 @@ const typeVariants = {
 	overline: "div",
 };
 
-const Typography = ({
+/*const Typography = ({
 	children,
 	className,
 	variant = "body1",
@@ -27,10 +25,10 @@ const Typography = ({
 }) => {
 	const Component = component;
 	return (
-		<Component {...rest} className={[styles.Typography, styles[variant], className].join(" ")}>
+		<Component {...rest} className={[styled.Typography, styles[variant], className].join(" ")}>
 			{children}
 		</Component>
 	);
 };
 
-export default Typography;
+export default Typography; */
