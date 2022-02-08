@@ -1,14 +1,14 @@
 import React from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
-import Typography from "@mui/material/typography";
+import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./styled";
 import Image from "next/image";
+import Button from "@mui/material/Button";
 
 const PlantCard = ({
 	description,
@@ -18,6 +18,7 @@ const PlantCard = ({
 	location,
 	number,
 	spaceType,
+	tellMeMore,
 	...rest
 }) => {
 	const [expanded, setExpanded] = React.useState(false);
@@ -39,7 +40,12 @@ const PlantCard = ({
 			/>
 
 			<CardContent>
-				<Typography>{soilQuality}</Typography>
+				<Typography>Soil quality: {soilQuality}</Typography>
+				<Typography>Location: {location}</Typography>
+				<Typography>Size of the space: {size}</Typography>
+				<Typography>Number of possible plant buddies: {number}</Typography>
+				<Typography>Type of space: {spaceType}</Typography>
+				<Typography>Contact me: {contactInfo}</Typography>
 			</CardContent>
 			<CardActions disableSpacing>
 				<ExpandMore
@@ -48,16 +54,12 @@ const PlantCard = ({
 					aria-expanded={expanded}
 					aria-label="show more"
 				>
-					<ExpandMoreIcon />
+					<Button size="small">Tell me More</Button> <ExpandMoreIcon />
 				</ExpandMore>
 			</CardActions>
 			<Collapse in={expanded} timeout="auto" unmountOnExit>
 				<CardContent>
-					<Typography variant="body1">Method:</Typography>
-					<Typography variant="body1">Lorem ipsum</Typography>
-					<Typography component="body1">Bliblablu</Typography>
-					<Typography component="body2">Foo Yoo Coo</Typography>
-					<Typography>Mimamu</Typography>
+					<Typography variant="body1">{tellMeMore} </Typography>
 				</CardContent>
 			</Collapse>
 		</Card>

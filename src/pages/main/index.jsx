@@ -22,6 +22,8 @@ const Page = () => {
 			</Head>
 			<h1>Plant Buddy</h1>
 			<Button onClick={() => router.push("/form")}>Create new entry</Button>
+			<br />
+			<br />
 			{plantCards.map(plant => {
 				return <PlantCard key={plant.id} {...plant} />;
 			})}
