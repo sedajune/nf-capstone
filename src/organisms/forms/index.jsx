@@ -2,11 +2,8 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import Button from "../../atoms/button";
 import useStore from "../../ions/hooks/storeFormData";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 
 const PlantForm = () => {
