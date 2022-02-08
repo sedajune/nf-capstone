@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import Layout from "../../organisms/layout";
-import Typography from "@mui/material/typography";
+import Typography from "@mui/material/Typography";
 
 const Page = () => {
 	return (

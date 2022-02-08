@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
-import Typography from "@mui/material/typography";
+import Typography from "@mui/material/Typography";
 import Button from "../atoms/button";
 import { useRouter } from "next/router";
 
