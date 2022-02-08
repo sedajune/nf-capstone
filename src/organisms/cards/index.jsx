@@ -59,7 +59,7 @@ const PlantCard = ({
 			</CardActions>
 			<Collapse in={expanded} timeout="auto" unmountOnExit>
 				<CardContent>
-					<Typography variant="body1">{tellMeMore} </Typography>
+					<Typography>{tellMeMore}</Typography>
 				</CardContent>
 			</Collapse>
 		</Card>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
@@ -61,10 +61,10 @@ const PlantForm = () => {
 		},
 	];
 
-	const [spaceType, setSpaceType] = React.useState("");
-	const [open, setOpen] = React.useState(false);
+	const [spaceType, setSpaceType] = useState("");
+	const [open, setOpen] = useState(false);
 
-	const [soilType, setSoilType] = React.useState("");
+	const [soilType, setSoilType] = useState("");
 
 	const handleChange = event => {
 		setSpaceType(event.target.value);
