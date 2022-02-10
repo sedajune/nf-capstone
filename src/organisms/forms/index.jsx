@@ -10,56 +10,9 @@ const PlantForm = () => {
 	const plantCards = useStore(state => state.plantCards);
 	const setPlantCards = useStore(state => state.setPlantCard);
 
-	const plantSpaces = [
-		{
-			value: "garden",
-			label: "garden",
-		},
-		{
-			value: "piece of land",
-			label: "piece of land",
-		},
-		{
-			value: "terrace",
-			label: "terrace",
-		},
-		{
-			value: "balcony",
-			label: "balcony",
-		},
-		{
-			value: "other",
-			label: "other",
-		},
-	];
+	const plantSpaces = useStore(state => state.plantSpaces);
 
-	const soilQualities = [
-		{
-			value: "clay",
-			label: "clay",
-		},
-		{
-			value: "sandy",
-			label: "sandy",
-		},
-		{
-			value: "loamy",
-			label: "loamy",
-		},
-		{
-			value: "chalky",
-			label: "chalky",
-		},
-		{
-			value: "silty",
-			label: "silty",
-		},
-
-		{
-			value: "peaty",
-			label: "peaty",
-		},
-	];
+	const soilQualities = useStore(state => state.soilQualities);
 
 	const [spaceType, setSpaceType] = useState("");
 	const [open, setOpen] = useState(false);
@@ -74,11 +27,11 @@ const PlantForm = () => {
 		defaultValues: {
 			description: "",
 			contactInfo: "",
-			soilQuality: {},
+			soilQuality: "",
 			size: "",
 			location: "",
 			number: "",
-			spaceType: {},
+			spaceType: "",
 		},
 	});
 
@@ -213,6 +166,7 @@ const PlantForm = () => {
 					control={control}
 					render={({ field }) => (
 						<TextField
+							sx={{ mb: "1.5rem" }}
 							label="Tell me more about your motivation"
 							multiline
 							fullWidth
@@ -224,8 +178,6 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-				<br />
-				<br />
 				<Button>Create your entry</Button>
 			</form>
 		</>

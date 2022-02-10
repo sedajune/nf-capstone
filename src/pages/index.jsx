@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
 import Button from "../atoms/button";
 import { useRouter } from "next/router";
+import { spacing } from "@mui/system";
 
 const pinBoard = ({ children, className }) => {
 	return <div className={className}>{children} </div>;
@@ -23,9 +24,7 @@ const Page = () => {
 				<title key="title">home</title>
 				<meta key="description" name="description" content="Home" />
 			</Head>
-			<br />
-			<br />
-			<Typography component="h3" variant="h3">
+			<Typography sx={{ mb: "1.5rem" }} component="h3" variant="h3">
 				Plant Buddy
 			</Typography>
 
@@ -38,9 +37,8 @@ const Page = () => {
 				layout="responsive"
 				quality="100"
 				priority="true"
+				sx={{ mb: "5rem" }}
 			/>
-			<br />
-			<br />
 			<Button onClick={() => router.push("/main")}>Enter</Button>
 		</PinBoardStyled>
 	);

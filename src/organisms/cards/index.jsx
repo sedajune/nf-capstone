@@ -9,6 +9,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./styled";
 import Image from "next/image";
 import Button from "@mui/material/Button";
+import FavoriteButton from "../../atoms/checkbox";
 
 const PlantCard = ({
 	description,
@@ -28,7 +29,8 @@ const PlantCard = ({
 	};
 
 	return (
-		<Card sx={{ maxWidth: 345 }}>
+		<Card sx={{ maxWidth: 345, mx: "auto" }}>
+			<FavoriteButton />
 			<CardHeader title={description} />
 
 			<Image
