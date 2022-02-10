@@ -2,11 +2,9 @@ import Head from "next/head";
 import React from "react";
 import Layout from "../../organisms/layout";
 import PlantCard from "../../organisms/cards";
-import { useRouter } from "next/router";
 import useStore from "../../ions/hooks/storeFormData";
 
 const Page = () => {
-	const router = useRouter();
 	const plantCards = useStore(state => state.plantCards);
 
 	return (
