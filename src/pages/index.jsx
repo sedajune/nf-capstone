@@ -5,7 +5,6 @@ import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
 import Button from "../atoms/button";
 import { useRouter } from "next/router";
-import { spacing } from "@mui/system";
 
 const pinBoard = ({ children, className }) => {
 	return <div className={className}>{children} </div>;
