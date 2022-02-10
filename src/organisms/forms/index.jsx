@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import Button from "../../atoms/button";
+import CustomButton from "../../atoms/customButton";
 import useStore from "../../ions/hooks/storeFormData";
 import InputAdornment from "@mui/material/InputAdornment";
 
@@ -178,7 +178,7 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-				<Button>Create your entry</Button>
+				<CustomButton>Create your entry</CustomButton>
 			</form>
 		</>
 	);

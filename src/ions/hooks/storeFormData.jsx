@@ -1,12 +1,38 @@
 import create from "zustand";
 import { v4 as uuid } from "uuid";
+import produce from "immer";
 //import { persist } from "zustand/middleware";
 
 const useStore = create(
 	//persist(
 	set => {
 		return {
-			plantCards: [],
+			plantCards: [
+				{
+					bookmarked: false,
+					contactInfo: "Sam@cat.com",
+					description: "Looking for a plant buddy in Hamburg",
+					id: "f56b4320-ab62-4c80-9303-1f58c9273c08",
+					location: "Hamburg Winterhude",
+					number: "",
+					size: "5",
+					soilQuality: "",
+					spaceType: "",
+					tellMeMore: undefined,
+				},
+				{
+					bookmarked: false,
+					contactInfo: "Pam@cat.com",
+					description: "Looking for a plant buddy in Berlin",
+					id: "f56b4320-ab62-4c80-9303-1f58c92738",
+					location: "Hamburg Schanze",
+					number: "",
+					size: "2",
+					soilQuality: "",
+					spaceType: "",
+					tellMeMore: undefined,
+				},
+			],
 			plantSpaces: [
 				{
 					value: "garden",
@@ -59,10 +85,12 @@ const useStore = create(
 			setPlantCard: data =>
 				set(state => ({ plantCards: [...state.plantCards, { ...data, id: uuid() }] })),
 
-			//bookmarkedCards: id => {
-			//set(state => ({
-			//plantCards: [{}],
-			//}));
+			setBookmark: index =>
+				set(
+					produce(state => {
+						state.plantCards[index].bookmarked = !state.plantCards[index].bookmarked;
+					})
+				),
 		};
 	}
 	//,

@@ -3,8 +3,7 @@ import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
-import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
-import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
+import SpaIcon from "@mui/icons-material/Spa";
 import ModeIcon from "@mui/icons-material/Mode";
 import Paper from "@mui/material/Paper";
 import { useRouter } from "next/router";
@@ -25,13 +24,24 @@ const Footer = () => {
 						}}
 					>
 						<BottomNavigationAction
-							/*button onClick = (() => {router.push("/main")})*/ icon={
-								<CottageRoundedIcon />
-							}
+							icon={<CottageRoundedIcon />}
+							onClick={() => {
+								router.push("/main");
+							}}
 						/>
-						<BottomNavigationAction icon={<EmojiNatureIcon />} />
-						<BottomNavigationAction icon={<EmojiObjectsIcon />} />
-						<BottomNavigationAction icon={<ModeIcon />} />
+						<BottomNavigationAction
+							icon={<SpaIcon />}
+							onClick={() => {
+								router.push("/bookmarks");
+							}}
+						/>
+
+						<BottomNavigationAction
+							icon={<ModeIcon />}
+							onClick={() => {
+								router.push("/form");
+							}}
+						/>
 					</BottomNavigation>
 				</Paper>
 			</Box>

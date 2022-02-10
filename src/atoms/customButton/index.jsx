@@ -8,8 +8,8 @@ import StyledButton from "./styled";
  * @return {JSX.Element}
  * @constructor
  */
-const Button = ({ children, ...props }) => {
+const CustomButton = ({ children, ...props }) => {
 	return <StyledButton {...props}>{children}</StyledButton>;
 };
 
-export default Button;
+export default CustomButton;

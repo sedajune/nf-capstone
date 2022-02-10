@@ -20,17 +20,19 @@ const PlantCard = ({
 	number,
 	spaceType,
 	tellMeMore,
+	bookmarked,
+	index,
 	...rest
 }) => {
 	const [expanded, setExpanded] = React.useState(false);
-	console.log(rest);
+
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
 	};
 
 	return (
 		<Card sx={{ maxWidth: 345, mx: "auto" }}>
-			<FavoriteButton />
+			<FavoriteButton index={index} bookmarked={bookmarked} />
 			<CardHeader title={description} />
 
 			<Image
