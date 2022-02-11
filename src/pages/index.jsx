@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
-import Button from "../atoms/button";
+import CustomButton from "../atoms/customButton";
 import { useRouter } from "next/router";
 
 const pinBoard = ({ children, className }) => {
@@ -38,7 +38,7 @@ const Page = () => {
 				priority="true"
 				sx={{ mb: "5rem" }}
 			/>
-			<Button onClick={() => router.push("/main")}>Enter</Button>
+			<CustomButton onClick={() => router.push("/main")}>Enter</CustomButton>
 		</PinBoardStyled>
 	);
 };
