@@ -41,7 +41,9 @@ const Page = () => {
 					setImageSelected(event.target.files[0]);
 				}}
 			/>
-			<button onClick={uploadImage}>Upload Image</button>
+			<button type="submit" onClick={uploadImage}>
+				Upload Image
+			</button>
 
 			<Image src={imageSelected} alt="garden" />
 		</Layout>
