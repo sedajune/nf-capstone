@@ -1,4 +1,4 @@
-import Head from "next/head";
+/*import Head from "next/head";
 import React from "react";
 import Layout from "../organisms/layout";
 import useGet from "../ions/hooks/fetch/get";
@@ -24,4 +24,4 @@ const Page = () => {
 	);
 };
 
-export default Page;
+export default Page;*/

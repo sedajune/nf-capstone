@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./styled";
 import Image from "next/image";
-import Button from "@mui/material/Button";
 import FavoriteButton from "../../atoms/checkbox";
 
 const PlantCard = ({
@@ -31,7 +30,7 @@ const PlantCard = ({
 	};
 
 	return (
-		<Card sx={{ maxWidth: 345, mx: "auto" }}>
+		<Card sx={{ maxWidth: 345, mx: "auto", mb: 5 }}>
 			<FavoriteButton index={index} bookmarked={bookmarked} />
 			<CardHeader title={description} />
 
@@ -58,10 +57,13 @@ const PlantCard = ({
 					aria-expanded={expanded}
 					aria-label="show more"
 				>
-					<Button size="small">Tell me More</Button> <ExpandMoreIcon />
+					<Typography component="subtitle1" variant="subtitle1">
+						Tell Me More
+					</Typography>
+					<ExpandMoreIcon />
 				</ExpandMore>
 			</CardActions>
-			<Collapse in={expanded} timeout="auto" unmountOnExit>
+			<Collapse sx={{ mb: 10 }} in={expanded} timeout="auto" unmountOnExit>
 				<CardContent>
 					<Typography>{tellMeMore}</Typography>
 				</CardContent>

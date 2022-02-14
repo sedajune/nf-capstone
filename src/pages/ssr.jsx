@@ -1,4 +1,4 @@
-import axios from "axios";
+/*import axios from "axios";
 import Head from "next/head";
 import React from "react";
 import Layout from "../organisms/layout";
@@ -35,3 +35,4 @@ export const getServerSideProps = async () => {
 		};
 	}
 };
+*/

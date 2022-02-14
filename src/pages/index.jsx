@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
-import CustomButton from "../atoms/customButton";
+import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
 
 const pinBoard = ({ children, className }) => {
@@ -11,7 +11,7 @@ const pinBoard = ({ children, className }) => {
 };
 
 const PinBoardStyled = styled(pinBoard)`
-	background: green;
+	background: #26864a;
 `;
 
 const Page = () => {
@@ -23,7 +23,7 @@ const Page = () => {
 				<title key="title">home</title>
 				<meta key="description" name="description" content="Home" />
 			</Head>
-			<Typography sx={{ mb: "1.5rem" }} component="h3" variant="h3">
+			<Typography sx={{ mb: "1.5rem" }} component="h1" variant="h1" color="text.secondary">
 				Plant Buddy
 			</Typography>
 
@@ -38,7 +38,7 @@ const Page = () => {
 				priority="true"
 				sx={{ mb: "5rem" }}
 			/>
-			<CustomButton onClick={() => router.push("/main")}>Enter</CustomButton>
+			<Button onClick={() => router.push("/main")}>Enter</Button>
 		</PinBoardStyled>
 	);
 };

@@ -5,7 +5,7 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import Button from "./";
+import Button from ".";
 
 describe("Button component", () => {
 	it("should render", () => {
