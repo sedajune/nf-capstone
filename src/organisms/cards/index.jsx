@@ -7,11 +7,12 @@ import Collapse from "@mui/material/Collapse";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./styled";
-import Image from "next/image";
+import ImageUpload from "../image-upload";
 import FavoriteButton from "../../atoms/checkbox";
 
 const PlantCard = ({
 	description,
+	uploadedImage,
 	contactInfo,
 	soilQuality,
 	size,
@@ -34,9 +35,9 @@ const PlantCard = ({
 			<FavoriteButton index={index} bookmarked={bookmarked} />
 			<CardHeader title={description} />
 
-			<Image
-				src="https://images.unsplash.com/photo-1584479898061-15742e14f50d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-				alt="seedlings"
+			<ImageUpload
+				src={uploadedImage}
+				alt="picture plants"
 				width="150vw"
 				height="150vw"
 				quality="100"
@@ -57,9 +58,7 @@ const PlantCard = ({
 					aria-expanded={expanded}
 					aria-label="show more"
 				>
-					<Typography component="subtitle1" variant="subtitle1">
-						Tell Me More
-					</Typography>
+					<Typography>Tell Me More</Typography>
 					<ExpandMoreIcon />
 				</ExpandMore>
 			</CardActions>

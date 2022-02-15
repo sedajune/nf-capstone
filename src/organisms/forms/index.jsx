@@ -4,7 +4,8 @@ import { TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import useStore from "../../ions/hooks/storeFormData";
-import InputAdornment from "@mui/material/InputAdornment";
+import { Redirect } from "react-router-dom";
+import ImageUpload from "../image-upload";
 
 const PlantForm = () => {
 	const plantCards = useStore(state => state.plantCards);
@@ -26,6 +27,7 @@ const PlantForm = () => {
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
 			description: "",
+			image: "image",
 			contactInfo: "",
 			soilQuality: "",
 			size: "",
@@ -57,22 +59,35 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
+				<ImageUpload />
 
+				<Controller
+					name="location"
+					control={control}
+					render={({ field }) => (
+						<TextField
+							label="Location"
+							variant="outlined"
+							size="normal"
+							margin="normal"
+							required
+							fullWidth
+							{...field}
+						/>
+					)}
+				/>
 				<Controller
 					name="size"
 					control={control}
 					render={({ field }) => (
 						<TextField
-							label="Size of your space"
+							label="Size of your space in m²"
 							variant="outlined"
 							size="normal"
 							margin="normal"
 							type="number"
 							required
 							{...field}
-							InputProps={{
-								endAdornment: <InputAdornment position="end">m²</InputAdornment>,
-							}}
 						/>
 					)}
 				/>
@@ -90,20 +105,7 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-				<Controller
-					name="location"
-					control={control}
-					render={({ field }) => (
-						<TextField
-							label="Location"
-							variant="outlined"
-							size="normal"
-							margin="normal"
-							required
-							{...field}
-						/>
-					)}
-				/>
+
 				<Controller
 					name="soilQuality"
 					control={control}
@@ -111,13 +113,36 @@ const PlantForm = () => {
 						<TextField
 							id="select-space"
 							select
-							label="Type of Soil"
+							label="Type of soil"
 							value={soilType}
 							onChange={handleChange}
 							helperText="Please select your soil"
+							margin="normal"
 							{...field}
 						>
 							{soilQualities.map(option => (
+								<MenuItem key={option.value} value={option.value}>
+									{option.label}
+								</MenuItem>
+							))}
+						</TextField>
+					)}
+				/>
+				<Controller
+					name="spaceType"
+					control={control}
+					render={({ field }) => (
+						<TextField
+							id="outlined-select-space"
+							select
+							label="Type of space"
+							value={spaceType}
+							onChange={handleChange}
+							helperText="Please select your space"
+							margin="normal"
+							{...field}
+						>
+							{plantSpaces.map(option => (
 								<MenuItem key={option.value} value={option.value}>
 									{option.label}
 								</MenuItem>
@@ -140,34 +165,12 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-
-				<Controller
-					name="spaceType"
-					control={control}
-					render={({ field }) => (
-						<TextField
-							id="outlined-select-space"
-							select
-							label="Type of space"
-							value={spaceType}
-							onChange={handleChange}
-							helperText="Please select your space"
-							{...field}
-						>
-							{plantSpaces.map(option => (
-								<MenuItem key={option.value} value={option.value}>
-									{option.label}
-								</MenuItem>
-							))}
-						</TextField>
-					)}
-				/>
 				<Controller
 					name="tellMeMore"
 					control={control}
 					render={({ field }) => (
 						<TextField
-							sx={{ mb: "1.5rem" }}
+							sx={{ mb: "2.5rem" }}
 							label="Tell me more about your motivation"
 							multiline
 							fullWidth
@@ -179,7 +182,9 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-				<Button>Create your entry</Button>
+				<Button sx={{ mb: "3.5rem" }} variant="outlined" type="submit">
+					Create your entry
+				</Button>
 			</form>
 		</>
 	);

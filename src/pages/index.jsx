@@ -11,7 +11,7 @@ const pinBoard = ({ children, className }) => {
 };
 
 const PinBoardStyled = styled(pinBoard)`
-	background: #26864a;
+	background: white;
 `;
 
 const Page = () => {
@@ -38,7 +38,9 @@ const Page = () => {
 				priority="true"
 				sx={{ mb: "5rem" }}
 			/>
-			<Button onClick={() => router.push("/main")}>Enter</Button>
+			<Button variant="outlined" onClick={() => router.push("/main")}>
+				Enter
+			</Button>
 		</PinBoardStyled>
 	);
 };
