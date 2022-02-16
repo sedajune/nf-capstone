@@ -1,10 +1,7 @@
-import Link from "next/link";
 import React from "react";
 
 const Header = () => {
-	return <header>
-
-	</header>;
+	return <header></header>;
 };
 
 export default Header;
