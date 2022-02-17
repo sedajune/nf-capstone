@@ -3,7 +3,6 @@ import React from "react";
 import Layout from "../../organisms/layout";
 import useStore from "../../ions/hooks/storeFormData";
 import PlantCard from "../../organisms/cards";
-import Typography from "@mui/material/Typography";
 
 const Page = () => {
 	const plantCards = useStore(state => state.plantCards);

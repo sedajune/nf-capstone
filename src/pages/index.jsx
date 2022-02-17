@@ -38,9 +38,9 @@ const Page = () => {
 			/>
 			<Button
 				variant="outlined"
-				fullWidth
 				endIcon={<ArrowCircleRightOutlinedIcon />}
 				onClick={() => router.push("/main")}
+				fullWidth
 			>
 				Enter
 			</Button>
