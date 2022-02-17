@@ -37,10 +37,10 @@ const Page = () => {
 				sx={{ mb: "5rem" }}
 			/>
 			<Button
-				onClick={() => router.push("/main")}
 				variant="outlined"
 				endIcon={<ArrowCircleRightOutlinedIcon />}
 				fullWidth
+				onClick={() => router.push("/main")}
 			>
 				Enter
 			</Button>
