@@ -31,43 +31,45 @@ const PlantCard = ({
 	};
 
 	return (
-		<Card sx={{ maxWidth: 345, mx: "auto", mb: 5 }}>
-			<FavoriteButton index={index} bookmarked={bookmarked} />
-			<CardHeader title={description} />
+		<div>
+			<Card sx={{ maxWidth: 345, mx: "auto", mb: 5 }}>
+				<FavoriteButton index={index} bookmarked={bookmarked} />
+				<CardHeader title={description} />
 
-			<ImageUpload
-				src={uploadedImage}
-				alt="picture plants"
-				width="150vw"
-				height="150vw"
-				quality="100"
-			/>
+				<ImageUpload
+					src={uploadedImage}
+					alt="picture plants"
+					width="150vw"
+					height="150vw"
+					quality="100"
+				/>
 
-			<CardContent>
-				<Typography>Soil quality: {soilQuality}</Typography>
-				<Typography>Location: {location}</Typography>
-				<Typography>Size of the space: {size}</Typography>
-				<Typography>Number of possible plant buddies: {number}</Typography>
-				<Typography>Type of space: {spaceType}</Typography>
-				<Typography>Contact me: {contactInfo}</Typography>
-			</CardContent>
-			<CardActions disableSpacing>
-				<ExpandMore
-					expand={expanded}
-					onClick={handleExpandClick}
-					aria-expanded={expanded}
-					aria-label="show more"
-				>
-					<Typography>Tell Me More</Typography>
-					<ExpandMoreIcon />
-				</ExpandMore>
-			</CardActions>
-			<Collapse sx={{ mb: 10 }} in={expanded} timeout="auto" unmountOnExit>
 				<CardContent>
-					<Typography>{tellMeMore}</Typography>
+					<Typography>Soil quality: {soilQuality}</Typography>
+					<Typography>Location: {location}</Typography>
+					<Typography>Size of the space: {size}</Typography>
+					<Typography>Number of possible plant buddies: {number}</Typography>
+					<Typography>Type of space: {spaceType}</Typography>
+					<Typography>Contact me: {contactInfo}</Typography>
 				</CardContent>
-			</Collapse>
-		</Card>
+				<CardActions disableSpacing>
+					<ExpandMore
+						expand={expanded}
+						onClick={handleExpandClick}
+						aria-expanded={expanded}
+						aria-label="show more"
+					>
+						<Typography>Tell Me More</Typography>
+						<ExpandMoreIcon />
+					</ExpandMore>
+				</CardActions>
+				<Collapse sx={{ mb: 10 }} in={expanded} timeout="auto" unmountOnExit>
+					<CardContent>
+						<Typography>{tellMeMore}</Typography>
+					</CardContent>
+				</Collapse>
+			</Card>
+		</div>
 	);
 };
 

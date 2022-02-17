@@ -14,9 +14,7 @@ const Page = () => {
 				<title key="title">My Capstone Project</title>
 				<meta key="description" name="description" content="This is my capstone project" />
 			</Head>
-			<Typography sx={{ mb: "1.5rem" }} component="h3" variant="h3" color="primary">
-				Plant Buddy
-			</Typography>
+
 			{plantCards
 				.filter(plantCard => plantCard.bookmarked === true)
 				.map((plant, index) => {

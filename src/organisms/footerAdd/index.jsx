@@ -8,9 +8,21 @@ import ModeIcon from "@mui/icons-material/Mode";
 import Paper from "@mui/material/Paper";
 import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
 import { useRouter } from "next/router";
+import AddIcon from "@mui/icons-material/Add";
+import { styled } from "@mui/material/styles";
+import Fab from "@mui/material/Fab";
 import BrushIcon from "@mui/icons-material/Brush";
 
-const Footer = () => {
+const StyledFab = styled(Fab)({
+	position: "absolute",
+	zIndex: 1,
+	top: -30,
+	left: 0,
+	right: 0,
+	margin: "0 auto",
+});
+
+const FooterAdd = () => {
 	const [value, setValue] = React.useState(0);
 	const router = useRouter();
 
@@ -37,7 +49,15 @@ const Footer = () => {
 								router.push("/bookmarks");
 							}}
 						/>
-
+						<StyledFab
+							color="secondary"
+							aria-label="add"
+							onClick={() => {
+								router.push("/form");
+							}}
+						>
+							<AddIcon />
+						</StyledFab>
 						<BottomNavigationAction
 							icon={<EmojiNatureIcon />}
 							onClick={() => {
@@ -57,4 +77,4 @@ const Footer = () => {
 	);
 };
 
-export default Footer;
+export default FooterAdd;

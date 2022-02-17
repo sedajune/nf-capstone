@@ -4,8 +4,8 @@ import { TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import useStore from "../../ions/hooks/storeFormData";
-import { Redirect } from "react-router-dom";
 import ImageUpload from "../image-upload";
+import { useRouter } from "next/router";
 
 const PlantForm = () => {
 	const plantCards = useStore(state => state.plantCards);
@@ -19,6 +19,8 @@ const PlantForm = () => {
 	const [open, setOpen] = useState(false);
 
 	const [soilType, setSoilType] = useState("");
+
+	const router = useRouter();
 
 	const handleChange = event => {
 		setSpaceType(event.target.value);
@@ -39,6 +41,7 @@ const PlantForm = () => {
 
 	const onSubmit = data => {
 		setPlantCards(data);
+		router.push("/main");
 	};
 
 	return (
@@ -60,7 +63,6 @@ const PlantForm = () => {
 					)}
 				/>
 				<ImageUpload />
-
 				<Controller
 					name="location"
 					control={control}
@@ -105,7 +107,6 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-
 				<Controller
 					name="soilQuality"
 					control={control}
@@ -191,3 +192,13 @@ const PlantForm = () => {
 };
 
 export default PlantForm;
+
+async function handler(request, response) {
+	const data = request.body;
+	try {
+		await handleFormInputAsync(data);
+		response.redirect(307, "/main");
+	} catch (err) {
+		response.status(500).send({ error: "failed to fetch data" });
+	}
+}
