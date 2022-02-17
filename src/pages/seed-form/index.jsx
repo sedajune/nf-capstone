@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import Layout from "../../organisms/layout";
-import Typography from "@mui/material/Typography";
+import SeedForm from "../../organisms/seedForm";
 
 const Page = () => {
 	return (
@@ -10,9 +10,8 @@ const Page = () => {
 				<title key="title">My Capstone Project</title>
 				<meta key="description" name="description" content="This is my capstone project" />
 			</Head>
-			<Typography component="h1" variant="h3">
-				Plant Log
-			</Typography>
+
+			<SeedForm />
 		</Layout>
 	);
 };

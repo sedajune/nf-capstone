@@ -7,52 +7,47 @@ import useStore from "../../ions/hooks/storeFormData";
 import ImageUpload from "../image-upload";
 import { useRouter } from "next/router";
 
-const PlantForm = () => {
-	const plantCards = useStore(state => state.plantCards);
-	const setPlantCards = useStore(state => state.setPlantCard);
+const SeedForm = () => {
+	const seedCards = useStore(state => state.seedCards);
+	const setSeedCards = useStore(state => state.setSeedCard);
 
-	const plantSpaces = useStore(state => state.plantSpaces);
+	const type = useStore(state => state.type);
 
-	const soilQualities = useStore(state => state.soilQualities);
-
-	const [spaceType, setSpaceType] = useState("");
 	const [open, setOpen] = useState(false);
 
-	const [soilType, setSoilType] = useState("");
+	const [seedType, setSeedType] = useState("");
 
 	const router = useRouter();
 
 	const handleChange = event => {
-		setSpaceType(event.target.value);
+		setType(event.target.value);
 	};
 
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
-			description: "",
-			image: "image",
+			seedName: "",
+			uploadedImage: "image",
 			contactInfo: "",
-			soilQuality: "",
-			size: "",
-			location: "",
-			number: "",
-			spaceType: "",
+			seedDetails: "",
+			zipCode: "",
+			type: "",
 		},
 	});
 
 	const onSubmit = data => {
-		setPlantCards(data);
-		router.push("/main");
+		setSeedCards(data);
+		router.push("/seed-exchange");
 	};
 
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Controller
-					name="description"
+					name="seedName"
 					control={control}
 					render={({ field }) => (
 						<TextField
-							label="Find a welcoming title"
+							label="Name of the plant seeds/seedling"
 							variant="outlined"
 							size="large"
 							margin="normal"
@@ -64,64 +59,37 @@ const PlantForm = () => {
 				/>
 				<ImageUpload />
 				<Controller
-					name="location"
+					name="zipCode"
 					control={control}
 					render={({ field }) => (
 						<TextField
-							label="Location"
+							label="Your zip code:"
 							variant="outlined"
 							size="normal"
 							margin="normal"
+							type="number"
 							required
 							fullWidth
 							{...field}
 						/>
 					)}
 				/>
+
 				<Controller
-					name="size"
-					control={control}
-					render={({ field }) => (
-						<TextField
-							label="Size of your space in m²"
-							variant="outlined"
-							size="normal"
-							margin="normal"
-							type="number"
-							required
-							{...field}
-						/>
-					)}
-				/>
-				<Controller
-					name="number"
-					control={control}
-					render={({ field }) => (
-						<TextField
-							label="Number of buddies"
-							variant="outlined"
-							size="normal"
-							margin="normal"
-							type="number"
-							{...field}
-						/>
-					)}
-				/>
-				<Controller
-					name="soilQuality"
+					name="type"
 					control={control}
 					render={({ field }) => (
 						<TextField
 							id="select-space"
 							select
-							label="Type of soil"
-							value={soilType}
+							label="Type"
+							value={seedType}
 							onChange={handleChange}
-							helperText="Please select your soil"
+							helperText="Please select your type"
 							margin="normal"
 							{...field}
 						>
-							{soilQualities.map(option => (
+							{type.map(option => (
 								<MenuItem key={option.value} value={option.value}>
 									{option.label}
 								</MenuItem>
@@ -129,28 +97,7 @@ const PlantForm = () => {
 						</TextField>
 					)}
 				/>
-				<Controller
-					name="spaceType"
-					control={control}
-					render={({ field }) => (
-						<TextField
-							id="outlined-select-space"
-							select
-							label="Type of space"
-							value={spaceType}
-							onChange={handleChange}
-							helperText="Please select your space"
-							margin="normal"
-							{...field}
-						>
-							{plantSpaces.map(option => (
-								<MenuItem key={option.value} value={option.value}>
-									{option.label}
-								</MenuItem>
-							))}
-						</TextField>
-					)}
-				/>
+
 				<Controller
 					name="contactInfo"
 					control={control}
@@ -167,12 +114,12 @@ const PlantForm = () => {
 					)}
 				/>
 				<Controller
-					name="tellMeMore"
+					name="seedDetails"
 					control={control}
 					render={({ field }) => (
 						<TextField
 							sx={{ mb: "2.5rem" }}
-							label="Tell me more about your motivation"
+							label="Tell me more about your seeds/seedlings:"
 							multiline
 							fullWidth
 							rows={6}
@@ -191,4 +138,4 @@ const PlantForm = () => {
 	);
 };
 
-export default PlantForm;
+export default SeedForm;

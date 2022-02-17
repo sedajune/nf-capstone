@@ -21,7 +21,7 @@ const StyledFab = styled(Fab)({
 	margin: "0 auto",
 });
 
-const FooterAdd = () => {
+const FooterSeed = () => {
 	const [value, setValue] = React.useState(0);
 	const router = useRouter();
 
@@ -52,7 +52,7 @@ const FooterAdd = () => {
 							color="secondary"
 							aria-label="add"
 							onClick={() => {
-								router.push("/plant-form");
+								router.push("/seed-form");
 							}}
 						>
 							<AddIcon />
@@ -76,4 +76,4 @@ const FooterAdd = () => {
 	);
 };
 
-export default FooterAdd;
+export default FooterSeed;

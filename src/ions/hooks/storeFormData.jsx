@@ -35,6 +35,9 @@ const useStore = create(
 							"Hi my name is Pam and my apartment has a huge balcony, where there´s plenty of sun throughout the day. I would like to grow some fruit and veg, would you like to join?",
 					},
 				],
+
+				seedCards: [],
+
 				plantSpaces: [
 					{
 						value: "garden",
@@ -84,8 +87,21 @@ const useStore = create(
 						label: "peaty",
 					},
 				],
+				type: [
+					{
+						value: "seeds",
+						label: "seeds",
+					},
+					{
+						value: "seedlings",
+						label: "seedlings",
+					},
+				],
 				setPlantCard: data =>
 					set(state => ({ plantCards: [...state.plantCards, { ...data, id: uuid() }] })),
+
+				setSeedCard: data =>
+					set(state => ({ seedCards: [...state.seedCards, { ...data, id: uuid() }] })),
 
 				setBookmark: index =>
 					set(

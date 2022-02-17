@@ -4,6 +4,12 @@ import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import ImageUpload from "../image-upload";
+import styled from "@emotion/styled";
+
+const SeeCard = styled.div`
+	border: 4px solid #e4eaeb;
+	background-color: #ffde7e;
+`;
 
 const SeedCard = ({
 	seedName,
@@ -11,12 +17,13 @@ const SeedCard = ({
 	contactInfo,
 	seedDetails,
 	zipCode,
+	type,
 	index,
 	...rest
 }) => {
 	return (
 		<div>
-			<Card sx={{ maxWidth: 345, mx: "auto", mb: 5 }}>
+			<SeeCard sx={{ maxWidth: 345, mx: "auto", mb: 5 }}>
 				<CardHeader title={seedName} />
 
 				<ImageUpload
@@ -28,11 +35,12 @@ const SeedCard = ({
 				/>
 
 				<CardContent>
+					<Typography>Type: {type}</Typography>
 					<Typography>Information about this plant: {seedDetails}</Typography>
 					<Typography>My location: {zipCode}</Typography>
 					<Typography>Contact me: {contactInfo}</Typography>
 				</CardContent>
-			</Card>
+			</SeeCard>
 		</div>
 	);
 };
