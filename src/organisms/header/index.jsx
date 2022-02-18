@@ -19,7 +19,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 const Header = () => {
 	return (
-		<Box sx={{ flexGrow: 1, mb: "1.5rem" }}>
+		<Box sx={{ flexGrow: 1, mb: "0.5rem" }}>
 			<AppBar position="static">
 				<StyledToolbar>
 					<Image src={logo} alt="logo plant buddy" />

@@ -2,10 +2,12 @@ import Head from "next/head";
 import React from "react";
 import Typography from "@mui/material/Typography";
 import SeedCard from "../../organisms/seedCard";
-import FooterAdd from "../../organisms/footerAdd";
+import useStore from "../../ions/hooks/storeFormData";
+import FooterSeed from "../../organisms/footerSeed";
 import Header from "../../organisms/header";
 
 const Page = () => {
+	const seedCards = useStore(state => state.seedCards);
 	return (
 		<div>
 			<Header>
@@ -21,8 +23,11 @@ const Page = () => {
 			<Typography component="h3" variant="h4" color="primary">
 				Seed Exchange
 			</Typography>
-			<SeedCard />
-			<FooterAdd />
+			{seedCards.map((card, index) => {
+				return <SeedCard key={card.id} index={index} {...card} />;
+			})}
+
+			<FooterSeed />
 		</div>
 	);
 };
