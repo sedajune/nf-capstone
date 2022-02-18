@@ -8,7 +8,7 @@ import styled from "@emotion/styled";
 
 const SeeCard = styled.div`
 	border: 4px solid #e4eaeb;
-	background-color: #ffde7e;
+	background-color: #ffffe3;
 `;
 
 const SeedCard = ({
