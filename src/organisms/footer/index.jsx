@@ -4,7 +4,6 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import CottageRoundedIcon from "@mui/icons-material/CottageRounded";
 import SpaIcon from "@mui/icons-material/Spa";
-import ModeIcon from "@mui/icons-material/Mode";
 import Paper from "@mui/material/Paper";
 import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
 import { useRouter } from "next/router";
