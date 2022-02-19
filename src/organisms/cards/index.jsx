@@ -7,7 +7,6 @@ import Collapse from "@mui/material/Collapse";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./styled";
-import ImageUpload from "../image-upload";
 import FavoriteButton from "../../atoms/checkbox";
 
 const PlantCard = ({
@@ -17,6 +16,7 @@ const PlantCard = ({
 	soilQuality,
 	size,
 	location,
+	zipCode,
 	number,
 	spaceType,
 	tellMeMore,
@@ -36,7 +36,7 @@ const PlantCard = ({
 				<FavoriteButton index={index} bookmarked={bookmarked} />
 				<CardHeader title={description} />
 
-				<ImageUpload
+				<img
 					src={uploadedImage}
 					alt="picture plants"
 					width="150vw"
@@ -47,6 +47,7 @@ const PlantCard = ({
 				<CardContent>
 					<Typography>Soil quality: {soilQuality}</Typography>
 					<Typography>Location: {location}</Typography>
+					<Typography>Zip Code: {zipCode}</Typography>
 					<Typography>Size of the space: {size}</Typography>
 					<Typography>Number of possible plant buddies: {number}</Typography>
 					<Typography>Type of space: {spaceType}</Typography>

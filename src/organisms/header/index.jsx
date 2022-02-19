@@ -13,7 +13,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 	paddingBottom: theme.spacing(2),
 	// Override media queries injected by theme.mixins.toolbar
 	"@media all": {
-		minHeight: 128,
+		maxHeight: 100,
 	},
 }));
 
@@ -24,7 +24,7 @@ const Header = () => {
 				<StyledToolbar>
 					<Image src={logo} alt="logo plant buddy" />
 					<Typography
-						variant="h3"
+						variant="h4"
 						noWrap
 						component="div"
 						sx={{ flexGrow: 1, alignSelf: "center" }}

@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
 
-const diySchema = new mongoose.Schema({
+const DiySchema = new mongoose.Schema({
 	name: String,
-	isChecked: Boolean,
+	description: String,
+	image: String,
 });
 
-const diyData = mongoose.model("DiyData", diySchema);
-
-export default DiyData;
+export default mongoose.model.Diy || mongoose.model("Diy", DiySchema);
