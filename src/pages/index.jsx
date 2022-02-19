@@ -17,7 +17,7 @@ const Page = () => {
 				<title key="title">home</title>
 				<meta key="description" name="description" content="Home" />
 			</Head>
-			<img src={logo} alt="logo plant buddy" position="relative" z-index="2" />
+			<Image src={logo} alt="logo plant buddy" position="relative" z-index="2" />
 			<Typography
 				variant="h1"
 				style={{

@@ -2,7 +2,7 @@ import DiyData from "../../../../models/diy.model.js";
 import connectMongoDb from "../../../ions/utils/database";
 
 const handler = async (request, response) => {
-	const { method, body } = request;
+	const { method } = request;
 	await connectMongoDb();
 	console.log("handler", request.body);
 
