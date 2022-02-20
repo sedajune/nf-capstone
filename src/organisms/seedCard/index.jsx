@@ -1,15 +1,9 @@
 import React from "react";
-import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import ImageUpload from "../image-upload";
 import styled from "@emotion/styled";
-
-const SeeCard = styled.div`
-	border: 4px solid #e4eaeb;
-	background-color: #ffffe3;
-`;
 
 const SeedCard = ({
 	seedName,
@@ -23,7 +17,7 @@ const SeedCard = ({
 }) => {
 	return (
 		<div>
-			<SeeCard sx={{ maxWidth: 345, mx: "auto", mb: 5 }}>
+			<SeedCard sx={{ maxWidth: 345, mx: "auto", mb: 5 }}>
 				<CardHeader title={seedName} />
 
 				<ImageUpload
@@ -40,7 +34,7 @@ const SeedCard = ({
 					<Typography>My location: {zipCode}</Typography>
 					<Typography>Contact me: {contactInfo}</Typography>
 				</CardContent>
-			</SeeCard>
+			</SeedCard>
 		</div>
 	);
 };

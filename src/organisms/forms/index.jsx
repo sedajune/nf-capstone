@@ -6,6 +6,9 @@ import Button from "@mui/material/Button";
 import useStore from "../../ions/hooks/storeFormData";
 import ImageUpload from "../image-upload";
 import { useRouter } from "next/router";
+import { FileController } from "../image-upload/fileController";
+//import { Control } from "../image-upload/control";
+//import Map from "../../molecules/map";
 
 const PlantForm = () => {
 	const plantCards = useStore(state => state.plantCards);
@@ -26,14 +29,15 @@ const PlantForm = () => {
 		setSpaceType(event.target.value);
 	};
 
-	const { control, handleSubmit } = useForm({
+	const { control, register, handleSubmit } = useForm({
 		defaultValues: {
 			description: "",
-			image: "image",
+			image: "file",
 			contactInfo: "",
 			soilQuality: "",
 			size: "",
 			location: "",
+			zipCode: "",
 			number: "",
 			spaceType: "",
 		},
@@ -62,7 +66,11 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-				<ImageUpload />
+				<Controller
+					name="image"
+					control={control}
+					render={({ field }) => <ImageUpload {...field} />}
+				/>
 				<Controller
 					name="location"
 					control={control}
@@ -79,11 +87,28 @@ const PlantForm = () => {
 					)}
 				/>
 				<Controller
+					name="zipCode"
+					control={control}
+					render={({ field }) => (
+						<TextField
+							label="Your Zip Code:"
+							variant="outlined"
+							size="normal"
+							margin="normal"
+							type="number"
+							required
+							fullWidth
+							{...field}
+						/>
+					)}
+				/>
+
+				<Controller
 					name="size"
 					control={control}
 					render={({ field }) => (
 						<TextField
-							label="Size of your space in m²"
+							label="Size of space in m²"
 							variant="outlined"
 							size="normal"
 							margin="normal"

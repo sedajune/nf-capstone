@@ -2,6 +2,9 @@ import Head from "next/head";
 import React from "react";
 import Layout from "../../organisms/layout";
 import Typography from "@mui/material/Typography";
+//import dynamic from "next/dynamic";
+
+//const NoSsrMap = dynamic(() => import("../../molecules/map"), { ssr: false });
 
 const Page = () => {
 	return (

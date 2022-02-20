@@ -17,6 +17,7 @@ const FavoriteButton = ({ bookmarked, index }) => {
 			inputProps={{ "aria-label": "controlled" }}
 			icon={<SpaOutlinedIcon />}
 			checkedIcon={<SpaIcon />}
+			sx={{ top: 10, left: 290 }}
 		/>
 	);
 };
