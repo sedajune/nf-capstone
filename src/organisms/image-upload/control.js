@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+/*import React, { useCallback, useState } from "react";
 import { useController } from "react-hook-form";
 
 import { getBase64 } from "./utils";
@@ -24,3 +24,4 @@ export function Control({ name, errors, control }) {
 		</div>
 	);
 }
+*/

@@ -12,7 +12,12 @@ const Page = () => {
 	const router = useRouter();
 
 	return (
-		<Box display="block" sx={{ top: 0, left: 0, right: 0, bottom: 0 }}>
+		<Box
+			position="absolute"
+			width="390"
+			height="844"
+			sx={{ top: 0, left: 0, right: 0, bottom: 0 }}
+		>
 			<Head>
 				<title key="title">home</title>
 				<meta key="description" name="description" content="Home" />

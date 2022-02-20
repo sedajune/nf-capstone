@@ -7,7 +7,8 @@ import useStore from "../../ions/hooks/storeFormData";
 import ImageUpload from "../image-upload";
 import { useRouter } from "next/router";
 import { FileController } from "../image-upload/fileController";
-import { Control } from "../image-upload/control";
+//import { Control } from "../image-upload/control";
+//import Map from "../../molecules/map";
 
 const PlantForm = () => {
 	const plantCards = useStore(state => state.plantCards);
@@ -65,7 +66,7 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-				<Control
+				<Controller
 					name="image"
 					control={control}
 					render={({ field }) => <ImageUpload {...field} />}
@@ -101,6 +102,7 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
+
 				<Controller
 					name="size"
 					control={control}

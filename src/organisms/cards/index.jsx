@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./styled";
 import FavoriteButton from "../../atoms/checkbox";
+import Map from "../../molecules/map";
 
 const PlantCard = ({
 	description,
@@ -48,6 +49,7 @@ const PlantCard = ({
 					<Typography>Soil quality: {soilQuality}</Typography>
 					<Typography>Location: {location}</Typography>
 					<Typography>Zip Code: {zipCode}</Typography>
+
 					<Typography>Size of the space: {size}</Typography>
 					<Typography>Number of possible plant buddies: {number}</Typography>
 					<Typography>Type of space: {spaceType}</Typography>
