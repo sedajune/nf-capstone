@@ -41,7 +41,7 @@ const ImageUpload = () => {
 	return (
 		<Box component="span" sx={{ p: 2 }}>
 			{image ? (
-				<Image alt="" src={image} loader="cloudinary" />
+				<Image alt="image.name" src={image} loader="cloudinary" />
 			) : (
 				<label htmlFor="icon-button-file">
 					<Input
