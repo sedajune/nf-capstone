@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import logo from "../ions/images/logo.png";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Page = () => {
