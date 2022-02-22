@@ -32,7 +32,7 @@ const PlantForm = () => {
 	const { control, register, handleSubmit } = useForm({
 		defaultValues: {
 			description: "",
-			image: "file",
+
 			contactInfo: "",
 			soilQuality: "",
 			size: "",
@@ -66,11 +66,8 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-				<Controller
-					name="image"
-					control={control}
-					render={({ field }) => <ImageUpload {...field} />}
-				/>
+				<ImageUpload />
+
 				<Controller
 					name="location"
 					control={control}

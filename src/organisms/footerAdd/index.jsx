@@ -49,7 +49,6 @@ const FooterAdd = () => {
 						/>
 						<StyledFab
 							color="secondary"
-							aria-label="add"
 							onClick={() => {
 								router.push("/plant-form");
 							}}

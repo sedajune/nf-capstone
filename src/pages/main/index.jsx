@@ -4,6 +4,7 @@ import PlantCard from "../../organisms/cards";
 import useStore from "../../ions/hooks/storeFormData";
 import FooterAdd from "../../organisms/footerAdd";
 import Header from "../../organisms/header";
+import SearchBar from "../../molecules/search-bar";
 
 const Page = () => {
 	const plantCards = useStore(state => state.plantCards);
@@ -15,7 +16,7 @@ const Page = () => {
 				<meta key="description" name="description" content="This is my capstone project" />
 			</Head>
 			<Header />
-
+			<SearchBar />
 			{plantCards.map((plant, index) => {
 				return <PlantCard key={plant.id} index={index} {...plant} />;
 			})}

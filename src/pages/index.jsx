@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
 import logo from "../ions/images/logo.png";
+import { useSession, signIn, signOut } from "next-auth/react";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Page = () => {
 	const router = useRouter();
@@ -22,7 +24,7 @@ const Page = () => {
 				<title key="title">home</title>
 				<meta key="description" name="description" content="Home" />
 			</Head>
-			<Image src={logo} alt="logo plant buddy" position="relative" z-index="2" />
+			<img src={logo} alt="logo plant buddy" z-index="40" />
 			<Typography
 				variant="h1"
 				style={{
@@ -37,24 +39,31 @@ const Page = () => {
 			>
 				Plant Buddy
 			</Typography>
-
-			<Image
-				src="https://images.unsplash.com/photo-1532978678576-8e855616398d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=markus-spiske-k2BDz7QXuJM-unsplash.jpg"
-				alt="main plant screen"
-				layout="fill"
-				quality="100"
-				priority="true"
-			/>
-
+			<div display="flex" justify-content="center" align-items="center" margin="0px">
+				<Image
+					src="https://images.unsplash.com/photo-1532978678576-8e855616398d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=markus-spiske-k2BDz7QXuJM-unsplash.jpg"
+					alt="main plant screen"
+					layout="fill"
+					quality="100"
+				/>
+			</div>
 			<Button
 				fullWidth
 				position="relative"
-				zIndex="2"
+				zindex="2"
 				style={{ top: 700 }}
 				endIcon={<ArrowCircleRightOutlinedIcon />}
 				onClick={() => router.push("/main")}
 			>
 				Enter
+			</Button>
+			<Button
+				fullWidth
+				startIcon={<GitHubIcon />}
+				style={{ top: 590, background: "black" }}
+				onClick={() => signIn("github")}
+			>
+				Sign in with GitHub
 			</Button>
 		</Box>
 	);

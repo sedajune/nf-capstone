@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
@@ -8,11 +8,12 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./styled";
 import FavoriteButton from "../../atoms/checkbox";
-import Map from "../../molecules/map";
+import Image from "next/image";
+import useStore from "../../ions/hooks/storeFormData";
+//import Map from "../../molecules/map";
 
 const PlantCard = ({
 	description,
-	uploadedImage,
 	contactInfo,
 	soilQuality,
 	size,
@@ -26,6 +27,8 @@ const PlantCard = ({
 	...rest
 }) => {
 	const [expanded, setExpanded] = React.useState(false);
+	// const [images, setImages] = useState([]);
+	// const getImages = useStore(state => state.getImages);
 
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
@@ -37,13 +40,13 @@ const PlantCard = ({
 				<FavoriteButton index={index} bookmarked={bookmarked} />
 				<CardHeader title={description} />
 
-				<img
-					src={uploadedImage}
+				{/* <Image
+					src={}
 					alt="picture plants"
-					width="150vw"
-					height="150vw"
+					width={150}
+					height={150}
 					quality="100"
-				/>
+				/> */}
 
 				<CardContent>
 					<Typography>Soil quality: {soilQuality}</Typography>

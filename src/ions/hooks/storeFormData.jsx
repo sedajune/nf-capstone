@@ -14,7 +14,7 @@ const useStore = create(
 						description: "Looking for a plant buddy in Hamburg",
 						id: "f56b4320-ab62-4c80-9303-1f58c9273c08",
 						location: "Hamburg Winterhude",
-						zipCode: "45678",
+						zipCode: "45178",
 						number: "3",
 						size: "5",
 						soilQuality: "sandy",
@@ -104,6 +104,9 @@ const useStore = create(
 
 				setSeedCard: data =>
 					set(state => ({ seedCards: [...state.seedCards, { ...data, id: uuid() }] })),
+
+				images: [],
+				setImages: uploadedImages => set({ images: uploadedImages }),
 
 				setBookmark: index =>
 					set(
