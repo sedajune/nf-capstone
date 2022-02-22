@@ -52,7 +52,6 @@ const ImageUpload = () => {
 	return (
 		<Box component="span" sx={{ p: 2 }}>
 			<div>
-				{" "}
 				<Image src={localImage}></Image>
 				<input
 					accept="image/*"

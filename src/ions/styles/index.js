@@ -12,6 +12,7 @@ export const globalStyle = css`
 	}
 
 	body {
+		height: 100%;
 		margin: 0;
 		background: #fffafa;
 		font-size: 1rem;
