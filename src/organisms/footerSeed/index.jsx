@@ -49,7 +49,6 @@ const FooterSeed = () => {
 						/>
 						<StyledFab
 							color="secondary"
-							aria-label="add"
 							onClick={() => {
 								router.push("/seed-form");
 							}}

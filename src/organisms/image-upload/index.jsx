@@ -5,12 +5,19 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import styled from "@emotion/styled";
+import useStore from "../../ions/hooks/storeFormData";
+import Button from "@mui/material/Button";
 
 const CLOUDNAME = process.env.NEXT_PUBLIC_CLOUDNAME;
 const PRESET = process.env.NEXT_PUBLIC_PRESET;
 
 const ImageUpload = () => {
-	const [image, setImage] = useState(null);
+	const [imageSelected, setImageSelected] = useState([]);
+	const [localImage, setLocalImage] = useState("");
+
+	const setImages = useStore(state => state.setImages);
+
+	const setPlantCard = useStore(state => state.setPlantCard);
 
 	const Image = styled.img`
 		max-width: 40%;
@@ -18,44 +25,51 @@ const ImageUpload = () => {
 		border: 4px solid #e4eaeb;
 	`;
 
-	const upload = event => {
+	const upload = async () => {
 		const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
 
-		const formData = new FormData();
-		formData.append("file", event.target.files[0]);
-		formData.append("upload_preset", PRESET);
+		const files = Array.from(imageSelected);
 
-		axios
-			.post(url, formData, {
-				headers: {
-					"Content-type": "multipart/form-data",
-				},
+		console.log(imageSelected);
+
+		const imageResponses = await Promise.all(
+			files.map(image => {
+				const formData = new FormData();
+				formData.append("file", image);
+				formData.append("upload_preset", PRESET);
+
+				return axios.post(url, formData);
 			})
-			.then(response => {
-				console.log(response);
-				setImage(response.data.url);
-			})
-			.catch(err => console.error(err));
+		);
+		const uploadedImages = imageResponses.map(response => {
+			return response.data.url;
+		});
+		setImages(uploadedImages);
+		setLocalImage(uploadedImages);
+		setPlantCard(uploadedImages);
 	};
 
 	return (
 		<Box component="span" sx={{ p: 2 }}>
-			{image ? (
-				<Image alt="image.name" src={image} loader="cloudinary" />
-			) : (
-				<label htmlFor="icon-button-file">
-					<Input
-						accept="image/*"
-						id="icon-button-file"
-						style={{ display: "none" }}
-						type="file"
-						onChange={upload}
-					/>
-					<IconButton color="primary" aria-label="upload picture" component="span">
-						<PhotoCamera />
-					</IconButton>
-				</label>
-			)}
+			<div>
+				<Image src={localImage}></Image>
+				<input
+					accept="image/*"
+					// style={{ display: "none" }}
+					type="file"
+					onChange={event => {
+						setImageSelected(event.target.files);
+					}}
+				/>
+				<IconButton
+					color="primary"
+					aria-label="upload picture"
+					component="span"
+					onClick={upload}
+				>
+					<PhotoCamera />
+				</IconButton>
+			</div>
 		</Box>
 	);
 };
