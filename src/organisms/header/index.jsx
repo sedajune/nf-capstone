@@ -9,6 +9,14 @@ import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import MoreIcon from "@mui/icons-material/MoreVert";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { useRouter } from "next/router";
+import CreateIcon from "@mui/icons-material/Create";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 	alignItems: "flex-start",
@@ -28,6 +36,54 @@ const ButtonLogin = styled(Button)({
 });
 
 const Header = () => {
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const router = useRouter();
+	const isMenuOpen = Boolean(anchorEl);
+
+	const handleProfileMenuOpen = event => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleMenuClose = () => {
+		setAnchorEl(null);
+	};
+
+	const menuId = "primary-search-account-menu";
+	const renderMenu = (
+		<Menu
+			anchorEl={anchorEl}
+			anchorOrigin={{
+				vertical: "top",
+				horizontal: "right",
+			}}
+			id={menuId}
+			keepMounted
+			transformOrigin={{
+				vertical: "top",
+				horizontal: "right",
+			}}
+			open={isMenuOpen}
+			onClose={handleMenuClose}
+		>
+			<MenuItem onClick={handleMenuClose}>
+				<AccountCircleIcon />
+				My Account
+			</MenuItem>
+			<MenuItem
+				onClick={() => {
+					router.push("/plant-log");
+				}}
+			>
+				<CreateIcon />
+				My Plant Log
+			</MenuItem>
+			<MenuItem onClick={() => signOut()}>
+				<GitHubIcon />
+				Logout
+			</MenuItem>
+		</Menu>
+	);
+
 	const { data: session } = useSession();
 	console.log(session);
 	return (
@@ -50,13 +106,25 @@ const Header = () => {
 								alt={session.user.name}
 								sx={{ m: "auto", mt: "10px" }}
 							/>
-							<ButtonLogin onClick={() => signOut()}>Logout</ButtonLogin>
 						</div>
 					) : (
-						<ButtonLogin onClick={() => signIn("github")}>Sign in</ButtonLogin>
+						<ButtonLogin onClick={() => signIn("github")}>
+							<GitHubIcon />
+						</ButtonLogin>
 					)}
+					<IconButton
+						size="large"
+						aria-label="display more actions"
+						edge="end"
+						aria-controls={menuId}
+						onClick={handleProfileMenuOpen}
+						color="inherit"
+					>
+						<MoreIcon />
+					</IconButton>
 				</StyledToolbar>
 			</AppBar>
+			{renderMenu}
 		</Box>
 	);
 };

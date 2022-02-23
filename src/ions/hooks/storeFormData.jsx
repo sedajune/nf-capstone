@@ -40,6 +40,8 @@ const useStore = create(
 
 				seedCards: [],
 
+				logCards: [],
+
 				plantSpaces: [
 					{
 						value: "garden",
@@ -104,6 +106,9 @@ const useStore = create(
 
 				setSeedCard: data =>
 					set(state => ({ seedCards: [...state.seedCards, { ...data, id: uuid() }] })),
+
+				setLogCard: data =>
+					set(state => ({ logCards: [...state.logCards, { ...data, id: uuid() }] })),
 
 				images: [],
 				setImages: uploadedImages => set({ images: uploadedImages }),
