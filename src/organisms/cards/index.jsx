@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
@@ -9,12 +9,15 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./styled";
 import FavoriteButton from "../../atoms/checkbox";
 import Image from "next/image";
-import useStore from "../../ions/hooks/storeFormData";
+import Carousel from "react-material-ui-carousel";
+import Box from "@mui/material/Box";
+
 //import Map from "../../molecules/map";
 
 const PlantCard = ({
 	description,
 	contactInfo,
+	images = [],
 	soilQuality,
 	size,
 	location,
@@ -27,8 +30,6 @@ const PlantCard = ({
 	...rest
 }) => {
 	const [expanded, setExpanded] = React.useState(false);
-	// const [images, setImages] = useState([]);
-	// const getImages = useStore(state => state.getImages);
 
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
@@ -39,15 +40,22 @@ const PlantCard = ({
 			<Card sx={{ maxWidth: 345, mx: "auto", mb: 5 }}>
 				<FavoriteButton index={index} bookmarked={bookmarked} />
 				<CardHeader title={description} />
-
-				{/* <Image
-					src={}
-					alt="picture plants"
-					width={150}
-					height={150}
-					quality="100"
-				/> */}
-
+				<Box sx={{ ml: "90px" }}>
+					<Carousel>
+						{images.map(image => {
+							return (
+								<Image
+									key={image}
+									src={image}
+									alt="picture plants"
+									width={150}
+									height={150}
+									quality="100"
+								/>
+							);
+						})}
+					</Carousel>
+				</Box>
 				<CardContent>
 					<Typography>Soil quality: {soilQuality}</Typography>
 					<Typography>Location: {location}</Typography>

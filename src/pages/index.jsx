@@ -6,65 +6,69 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
-import logo from "../ions/images/logo.png";
+import logo2 from "../ions/images/logo2.png";
 import { signIn } from "next-auth/react";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import Stack from "@mui/material/Stack";
+import styled from "@emotion/styled";
+
+const StyledImage = styled(Image)`
+	object-fit: cover;
+	object-position: 50% 50%;
+`;
 
 const Page = () => {
 	const router = useRouter();
 
 	return (
-		<Box
-			position="absolute"
-			width="390"
-			height="844"
-			sx={{ top: 0, left: 0, right: 0, bottom: 0 }}
-		>
+		<Box sx={{ inset: 0, position: "absolute" }}>
 			<Head>
 				<title key="title">home</title>
 				<meta key="description" name="description" content="Home" />
 			</Head>
-			<img src={logo} alt="logo plant buddy" z-index="40" />
+
+			<StyledImage
+				src="https://images.unsplash.com/photo-1532978678576-8e855616398d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=markus-spiske-k2BDz7QXuJM-unsplash.jpg"
+				alt="main plant screen"
+				layout="fill"
+				quality="100"
+				height="576"
+				width="384"
+			/>
+
 			<Typography
 				variant="h1"
-				style={{
-					height: 0,
-					left: 50,
-					top: 100,
-					width: "100%",
-					position: "relative",
-					zIndex: 1,
+				sx={{
+					px: 2,
+					pt: 12,
 					color: "white",
+					position: "relative",
 				}}
 			>
-				Plant Buddy
+				<img src={logo2.src} alt="logo plant buddy" />
+				lant Buddy
 			</Typography>
-			<div display="flex" justify-content="center" align-items="center" margin="0px">
-				<Image
-					src="https://images.unsplash.com/photo-1532978678576-8e855616398d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=markus-spiske-k2BDz7QXuJM-unsplash.jpg"
-					alt="main plant screen"
-					layout="fill"
-					quality="100"
-				/>
-			</div>
-			<Button
-				fullWidth
-				position="relative"
-				zindex="2"
-				style={{ top: 700 }}
-				endIcon={<ArrowCircleRightOutlinedIcon />}
-				onClick={() => router.push("/main")}
+
+			<Stack
+				gap={2}
+				sx={{ position: "absolute", bottom: 0, left: 0, right: 0, px: 2, pb: 5 }}
 			>
-				Enter
-			</Button>
-			<Button
-				fullWidth
-				startIcon={<GitHubIcon />}
-				style={{ top: 590, background: "black" }}
-				onClick={() => signIn("github")}
-			>
-				Sign in with GitHub
-			</Button>
+				<Button
+					fullWidth
+					endIcon={<ArrowCircleRightOutlinedIcon />}
+					onClick={() => router.push("/main")}
+				>
+					Enter
+				</Button>
+				<Button
+					fullWidth
+					startIcon={<GitHubIcon />}
+					sx={{ background: "black" }}
+					onClick={() => signIn("github")}
+				>
+					Sign in with GitHub
+				</Button>
+			</Stack>
 		</Box>
 	);
 };

@@ -1,21 +1,24 @@
 import * as React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import Box from "@mui/material/Box";
 
 const DiyCard = () => {
 	return (
-		<ImageList sx={{ width: 400, height: 750 }} variant="woven" cols={3} gap={8}>
-			{itemData.map(item => (
-				<ImageListItem key={item.img}>
-					<img
-						src={`${item.img}?w=161&fit=crop&auto=format`}
-						srcSet={`${item.img}?w=161&fit=crop&auto=format&dpr=2 2x`}
-						alt={item.title}
-						loading="lazy"
-					/>
-				</ImageListItem>
-			))}
-		</ImageList>
+		<Box sx={{ mb: 5 }}>
+			<ImageList sx={{ width: 370, height: 750, m: "auto" }} variant="woven" cols={3} gap={8}>
+				{itemData.map(item => (
+					<ImageListItem key={item.img}>
+						<img
+							src={`${item.img}?w=161&fit=crop&auto=format`}
+							srcSet={`${item.img}?w=161&fit=crop&auto=format&dpr=2 2x`}
+							alt={item.title}
+							loading="lazy"
+						/>
+					</ImageListItem>
+				))}
+			</ImageList>
+		</Box>
 	);
 };
 
@@ -67,5 +70,20 @@ const itemData = [
 		img: "http://hative.com/wp-content/uploads/2014/07/diy-planter-ideas/2-old-alarm-clock-planter.jpg",
 		title: "Alarm Clock",
 		source: "hative.com",
+	},
+	{
+		img: "http://3.bp.blogspot.com/-vdrRsifgCdw/VSZ9dndy_II/AAAAAAAAMrk/MFNLmUhhNYc/s1600/diy-recycled-planter-ideas-12.jpg",
+		title: "Bead sieve",
+		source: "3.bp.blogspot.com",
+	},
+	{
+		img: "https://cdn.onekindesign.com/wp-content/uploads/2020/04/Recycled-Wood-Pallet-Garden-Ideas-08-1-Kindesign.jpg",
+		title: "Palette",
+		source: "cdn.onekinddesign.com",
+	},
+	{
+		img: "https://diycraftsfood.trulyhandpicked.com/wp-content/uploads/2016/11/DIY-reycled-planter-for-kids-4.jpg",
+		title: "Egg shells",
+		source: "diycraftsfood.trulyhandpicked.com",
 	},
 ];

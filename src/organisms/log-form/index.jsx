@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { TextField } from "@mui/material";
-import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import useStore from "../../ions/hooks/storeFormData";
 import ImageUpload from "../image-upload";
 import { useRouter } from "next/router";
-import DateTimePicker from "@mui/lab/DateTimePicker";
+import DatePicker from "@mui/lab/DatePicker";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import Stack from "@mui/material/Stack";
@@ -14,10 +13,11 @@ import Stack from "@mui/material/Stack";
 const LogForm = () => {
 	const logCards = useStore(state => state.logCards);
 	const setLogCards = useStore(state => state.setLogCard);
+	const [images, setImages] = useState([]);
 
 	const router = useRouter();
 
-	const [value, setValue] = React.useState(new Date("2014-08-18T21:11:54"));
+	const [value, setValue] = React.useState(new Date());
 
 	const handleChange = newValue => {
 		setValue(newValue);
@@ -26,14 +26,17 @@ const LogForm = () => {
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
 			date: "",
-			uploadedImage: "image",
 			plantName: "",
 			logNotes: "",
 		},
 	});
 
+	const handleUpload = uploadedImages => {
+		setImages(uploadedImages);
+	};
+
 	const onSubmit = data => {
-		setLogCards(data);
+		setLogCards({ ...data, images });
 		router.push("/plant-log");
 	};
 
@@ -45,19 +48,22 @@ const LogForm = () => {
 					control={control}
 					render={({ field }) => (
 						<LocalizationProvider dateAdapter={AdapterDateFns}>
-							<Stack>
-								<DateTimePicker
-									label="Date&Time picker"
+							<Stack spacing={3}>
+								<DatePicker
+									label="Responsive"
+									openTo="year"
+									views={["year", "month", "day"]}
 									value={value}
-									onChange={handleChange}
+									onChange={newValue => {
+										setValue(newValue);
+									}}
 									renderInput={params => <TextField {...params} />}
-									{...field}
 								/>
 							</Stack>
 						</LocalizationProvider>
 					)}
 				/>
-				<ImageUpload />
+				<ImageUpload onUpload={handleUpload} />
 				<Controller
 					name="plantName"
 					control={control}

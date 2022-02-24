@@ -6,13 +6,13 @@ import Button from "@mui/material/Button";
 import useStore from "../../ions/hooks/storeFormData";
 import ImageUpload from "../image-upload";
 import { useRouter } from "next/router";
-import { FileController } from "../image-upload/fileController";
-//import { Control } from "../image-upload/control";
+
 //import Map from "../../molecules/map";
 
 const PlantForm = () => {
 	const plantCards = useStore(state => state.plantCards);
 	const setPlantCards = useStore(state => state.setPlantCard);
+	const [images, setImages] = useState([]);
 
 	const plantSpaces = useStore(state => state.plantSpaces);
 
@@ -29,10 +29,9 @@ const PlantForm = () => {
 		setSpaceType(event.target.value);
 	};
 
-	const { control, register, handleSubmit } = useForm({
+	const { control, handleSubmit } = useForm({
 		defaultValues: {
 			description: "",
-
 			contactInfo: "",
 			soilQuality: "",
 			size: "",
@@ -42,9 +41,11 @@ const PlantForm = () => {
 			spaceType: "",
 		},
 	});
-
+	const handleUpload = uploadedImages => {
+		setImages(uploadedImages);
+	};
 	const onSubmit = data => {
-		setPlantCards(data);
+		setPlantCards({ ...data, images });
 		router.push("/main");
 	};
 
@@ -66,7 +67,7 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-				<ImageUpload />
+				<ImageUpload onUpload={handleUpload} />
 
 				<Controller
 					name="location"
