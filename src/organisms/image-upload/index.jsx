@@ -4,6 +4,7 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Box from "@mui/material/Box";
 import styled from "@emotion/styled";
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 const CLOUDNAME = process.env.NEXT_PUBLIC_CLOUDNAME;
 const PRESET = process.env.NEXT_PUBLIC_PRESET;
@@ -47,16 +48,19 @@ const ImageUpload = ({ onUpload }) => {
 				{localImage.map(image => (
 					<Image src={image} />
 				))}
-				<input
-					accept="image/*"
-					multiple
-					// style={{ display: "none" }}
-					type="file"
-					onChange={event => {
-						setImageSelected(event.target.files);
-					}}
-				/>
+				<Stack>
+					<input
+						accept="image/*"
+						multiple
+						// style={{ display: "none" }}
+						type="file"
+						onChange={event => {
+							setImageSelected(event.target.files);
+						}}
+					/>
+				</Stack>
 				<Button
+					sx={{ mt: 3 }}
 					color="primary"
 					aria-label="upload picture"
 					component="span"

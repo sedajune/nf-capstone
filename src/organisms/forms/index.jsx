@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import useStore from "../../ions/hooks/storeFormData";
 import ImageUpload from "../image-upload";
 import { useRouter } from "next/router";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 
 //import Map from "../../molecules/map";
 
@@ -50,7 +52,7 @@ const PlantForm = () => {
 	};
 
 	return (
-		<>
+		<Box sx={{ mx: "10px" }}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Controller
 					name="description"
@@ -67,8 +69,9 @@ const PlantForm = () => {
 						/>
 					)}
 				/>
-				<ImageUpload onUpload={handleUpload} />
-
+				<Stack>
+					<ImageUpload onUpload={handleUpload} />
+				</Stack>
 				<Controller
 					name="location"
 					control={control}
@@ -102,6 +105,21 @@ const PlantForm = () => {
 				/>
 
 				<Controller
+					name="number"
+					control={control}
+					render={({ field }) => (
+						<TextField
+							label="Number of buddies"
+							variant="outlined"
+							size="normal"
+							margin="normal"
+							type="number"
+							fullWidth
+							{...field}
+						/>
+					)}
+				/>
+				<Controller
 					name="size"
 					control={control}
 					render={({ field }) => (
@@ -112,20 +130,6 @@ const PlantForm = () => {
 							margin="normal"
 							type="number"
 							required
-							{...field}
-						/>
-					)}
-				/>
-				<Controller
-					name="number"
-					control={control}
-					render={({ field }) => (
-						<TextField
-							label="Number of buddies"
-							variant="outlined"
-							size="normal"
-							margin="normal"
-							type="number"
 							{...field}
 						/>
 					)}
@@ -164,6 +168,7 @@ const PlantForm = () => {
 							onChange={handleChange}
 							helperText="Please select your space"
 							margin="normal"
+							fullWidth
 							{...field}
 						>
 							{plantSpaces.map(option => (
@@ -210,7 +215,7 @@ const PlantForm = () => {
 					Create your entry
 				</Button>
 			</form>
-		</>
+		</Box>
 	);
 };
 

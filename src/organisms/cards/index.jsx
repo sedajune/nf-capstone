@@ -14,6 +14,12 @@ import Box from "@mui/material/Box";
 
 //import Map from "../../molecules/map";
 
+const CardLabel = ({ children }) => (
+	<Box component="span" sx={theme => ({ color: theme.palette.primary.main })}>
+		{children}
+	</Box>
+);
+
 const PlantCard = ({
 	description,
 	contactInfo,
@@ -57,14 +63,31 @@ const PlantCard = ({
 					</Carousel>
 				</Box>
 				<CardContent>
-					<Typography>Soil quality: {soilQuality}</Typography>
-					<Typography>Location: {location}</Typography>
-					<Typography>Zip Code: {zipCode}</Typography>
+					<Typography>
+						<CardLabel>Soil quality:</CardLabel> {soilQuality}
+					</Typography>
+					<Typography>
+						<CardLabel>Location:</CardLabel> {location}
+					</Typography>
+					<Typography>
+						<CardLabel>Zip Code: </CardLabel>
+						{zipCode}
+					</Typography>
 
-					<Typography>Size of the space: {size}</Typography>
-					<Typography>Number of possible plant buddies: {number}</Typography>
-					<Typography>Type of space: {spaceType}</Typography>
-					<Typography>Contact me: {contactInfo}</Typography>
+					<Typography>
+						<CardLabel>Size of the space: </CardLabel>
+						{size}
+					</Typography>
+					<Typography>
+						<CardLabel>Number of possible plant buddies:</CardLabel> {number}
+					</Typography>
+					<Typography>
+						<CardLabel>Type of space: </CardLabel>
+						{spaceType}
+					</Typography>
+					<Typography>
+						<CardLabel>Contact me:</CardLabel> {contactInfo}
+					</Typography>
 				</CardContent>
 				<CardActions disableSpacing>
 					<ExpandMore

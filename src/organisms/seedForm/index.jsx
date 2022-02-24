@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import useStore from "../../ions/hooks/storeFormData";
 import ImageUpload from "../image-upload";
 import { useRouter } from "next/router";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 
 const SeedForm = () => {
 	const seedCards = useStore(state => state.seedCards);
@@ -42,7 +44,7 @@ const SeedForm = () => {
 	};
 
 	return (
-		<>
+		<Box sx={{ mx: "10px" }}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Controller
 					name="seedName"
@@ -59,8 +61,9 @@ const SeedForm = () => {
 						/>
 					)}
 				/>
-				<ImageUpload onUpload={handleUpload} />
-
+				<Stack>
+					<ImageUpload onUpload={handleUpload} />
+				</Stack>
 				<Controller
 					name="zipCode"
 					control={control}
@@ -90,6 +93,7 @@ const SeedForm = () => {
 							onChange={handleChange}
 							helperText="Please select your type"
 							margin="normal"
+							fullWidth
 							{...field}
 						>
 							{type.map(option => (
@@ -137,7 +141,7 @@ const SeedForm = () => {
 					Create your entry
 				</Button>
 			</form>
-		</>
+		</Box>
 	);
 };
 

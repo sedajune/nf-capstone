@@ -95,7 +95,7 @@ const theme = createTheme({
 					borderRadius: 20,
 					boxShadow: "0 3px 5px 2px",
 					color: "white",
-					height: 48,
+					height: 40,
 					padding: "0 30px",
 				},
 			},

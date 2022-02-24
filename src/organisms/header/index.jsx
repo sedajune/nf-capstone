@@ -64,7 +64,11 @@ const Header = () => {
 			open={isMenuOpen}
 			onClose={handleMenuClose}
 		>
-			<MenuItem onClick={handleMenuClose}>
+			<MenuItem
+				onClick={() => {
+					router.push("/my-account");
+				}}
+			>
 				<AccountCircleIcon />
 				My Account
 			</MenuItem>
@@ -84,7 +88,7 @@ const Header = () => {
 	);
 
 	const { data: session } = useSession();
-	console.log(session);
+
 	return (
 		<Box sx={{ flexGrow: 1, mb: "0.5rem" }}>
 			<AppBar position="static">
