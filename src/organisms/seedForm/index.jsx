@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 const SeedForm = () => {
 	const seedCards = useStore(state => state.seedCards);
 	const setSeedCards = useStore(state => state.setSeedCard);
+	const [images, setImages] = useState([]);
 
 	const type = useStore(state => state.type);
 
@@ -26,16 +27,17 @@ const SeedForm = () => {
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
 			seedName: "",
-			uploadedImage: "image",
 			contactInfo: "",
 			seedDetails: "",
 			zipCode: "",
 			type: "",
 		},
 	});
-
+	const handleUpload = uploadedImages => {
+		setImages(uploadedImages);
+	};
 	const onSubmit = data => {
-		setSeedCards(data);
+		setSeedCards({ ...data, images });
 		router.push("/seed-exchange");
 	};
 
@@ -57,7 +59,8 @@ const SeedForm = () => {
 						/>
 					)}
 				/>
-				<ImageUpload />
+				<ImageUpload onUpload={handleUpload} />
+
 				<Controller
 					name="zipCode"
 					control={control}

@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import logo from "../../ions/images/logo.png";
-import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -90,7 +89,7 @@ const Header = () => {
 		<Box sx={{ flexGrow: 1, mb: "0.5rem" }}>
 			<AppBar position="static">
 				<StyledToolbar>
-					<Image src={logo} alt="logo plant buddy" />
+					<img src={logo.src} alt="logo plant buddy" />
 					<Typography
 						variant="h4"
 						noWrap
