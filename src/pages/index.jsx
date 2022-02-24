@@ -17,6 +17,8 @@ const StyledImage = styled(Image)`
 	object-position: 50% 50%;
 `;
 
+const StyledIcon = styled.img``;
+
 const Page = () => {
 	const router = useRouter();
 
@@ -45,7 +47,7 @@ const Page = () => {
 					position: "relative",
 				}}
 			>
-				<img src={logo2.src} alt="logo plant buddy" />
+				<StyledIcon src={logo2.src} alt="logo plant buddy" />
 				lant Buddy
 			</Typography>
 
