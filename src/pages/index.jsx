@@ -48,6 +48,7 @@ const Page = () => {
 				<img src={logo2.src} alt="logo plant buddy" />
 				lant Buddy
 			</Typography>
+
 			<Stack
 				gap={2}
 				sx={{ position: "absolute", bottom: 0, left: 0, right: 0, px: 2, pb: 5 }}
