@@ -8,6 +8,7 @@ import Paper from "@mui/material/Paper";
 import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
 import { useRouter } from "next/router";
 import BrushIcon from "@mui/icons-material/Brush";
+import Toolbar from "@mui/material/Toolbar";
 
 const Footer = () => {
 	const [value, setValue] = React.useState(0);
@@ -15,6 +16,7 @@ const Footer = () => {
 
 	return (
 		<footer>
+			<Toolbar />
 			<Box sx={{ width: 500 }}>
 				<Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }} elevation={3}>
 					<BottomNavigation
@@ -25,12 +27,14 @@ const Footer = () => {
 					>
 						<BottomNavigationAction
 							icon={<CottageRoundedIcon />}
+							aria-label="home icon"
 							onClick={() => {
 								router.push("/main");
 							}}
 						/>
 						<BottomNavigationAction
 							icon={<SpaIcon />}
+							aria-label="bookmark icon"
 							onClick={() => {
 								router.push("/bookmarks");
 							}}
@@ -38,12 +42,14 @@ const Footer = () => {
 
 						<BottomNavigationAction
 							icon={<EmojiNatureIcon />}
+							aria-label="nature icon"
 							onClick={() => {
 								router.push("/seed-exchange");
 							}}
 						/>
 						<BottomNavigationAction
 							icon={<BrushIcon />}
+							aria-label="brush icon"
 							onClick={() => {
 								router.push("/diy-ideas");
 							}}

@@ -128,7 +128,6 @@ const PlantForm = () => {
 							variant="outlined"
 							size="normal"
 							margin="normal"
-							type="number"
 							required
 							{...field}
 						/>

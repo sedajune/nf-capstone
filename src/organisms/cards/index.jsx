@@ -64,9 +64,6 @@ const PlantCard = ({
 				</Box>
 				<CardContent>
 					<Typography>
-						<CardLabel>Soil quality:</CardLabel> {soilQuality}
-					</Typography>
-					<Typography>
 						<CardLabel>Location:</CardLabel> {location}
 					</Typography>
 					<Typography>
@@ -75,15 +72,18 @@ const PlantCard = ({
 					</Typography>
 
 					<Typography>
+						<CardLabel>Number of possible plant buddies:</CardLabel> {number}
+					</Typography>
+					<Typography>
 						<CardLabel>Size of the space: </CardLabel>
 						{size}
 					</Typography>
 					<Typography>
-						<CardLabel>Number of possible plant buddies:</CardLabel> {number}
-					</Typography>
-					<Typography>
 						<CardLabel>Type of space: </CardLabel>
 						{spaceType}
+					</Typography>
+					<Typography>
+						<CardLabel>Soil quality:</CardLabel> {soilQuality}
 					</Typography>
 					<Typography>
 						<CardLabel>Contact me:</CardLabel> {contactInfo}

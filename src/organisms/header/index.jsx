@@ -111,7 +111,7 @@ const Header = () => {
 							/>
 						</div>
 					) : (
-						<ButtonLogin onClick={() => signIn("github")}>
+						<ButtonLogin aria-label="Login" onClick={() => signIn("github")}>
 							<GitHubIcon />
 						</ButtonLogin>
 					)}

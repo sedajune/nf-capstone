@@ -1,128 +1,29 @@
-# Next App
+# 🌿 Plant Buddy – Capstone project 🌿
 
-This is a template for a Next.js app.
+![Plant Buddy Mockup](./src/ions/images/PlantBuddyMockup.png)
 
-It uses the following tools/libraries:
+## `Description`
 
-* [Storybook](https://storybook.js.org/)
-* [Cypress](https://cypress.io/)
-* [Jest](https://jestjs.io/)
-* [Commitlint](https://commitlint.js.org/)
-* [Stylelint](https://stylelint.io/)
-* [Eslint](https://eslint.org/)
-* [Prettier](https://prettier.io/)
+**This is a capstone project for [neuefische](https://www.neuefische.de/) web development bootcamp.**
 
-## Getting started
+My capstone project “Plant Buddy” was created to help you locate and share horizontal, as well as vertical green space with other plant enthusiasts in your area. Additionally, it offers you a seed exchange, a plant log and a DIY section to live the full green experience and fulfill your plant needs.
 
-**Run the development server:**
+### `Demo`
 
-```bash
-npm run dev
-```
+You can find the hosted version on Vercel: [Plant Buddy Demo](https://nf-capstone-black.vercel.app)
 
-**Run storybook:**
+**_IMPORTANT NOTE: currently optimized for mobile!_**
 
-```shell
-npm run storybook
-```
+## `Tech Stack`
 
-
-## Atomic design
-
-We use atomic design. You can read more about our decision in the
-[documentation](./docs/ATOMIC_DESIGN.md).
-
-## Behavior Driven Development
-
-We use behavior tests. You can read more about our decision in the
-[documentation](./docs/BEHAVIOR_DRIVEN_DEVELOPMENT.md).
-
-## Test Driven Development
-
-We jest to write unit tests. Please look at the Documentation for [Jest](https://jestjs.io/)
-and [testing-library](https://testing-library.com/docs/react-testing-library/intro/).
-
-## Commitlint
-
-We use commitlint to ensure conventional commit messages. You can read more about our decision in
-the [documentation](./docs/COMMITS.md).
-
-
-## Commands
-
-**Run the development server:**
-
-```bash
-npm run dev
-```
-
-**Build:**
-
-```shell
-npm run build
-```
-
-**Run storybook:**
-
-```shell
-npm run storybook
-```
-
-**Build storybook:**
-
-```shell
-npm run storybook:build
-```
-
-**Run e2e tests:**
-
-```shell
-npm run cypress # local without server
-# npm run cypress:run # headless
-# npm run test:e2e # with server
-```
-
-**Run unit tests:**
-
-```shell
-npm run jest
-# npm run jest:watch # watch
-# npm run test:unit # same as "npm run jest"
-```
-
-**Run all tests:**
-
-```shell
-npm run test
-```
-
-**Run stylelint**
-
-```shell
-npm run stylelint
-```
-
-**Run eslint**
-
-```shell
-npm run eslint
-```
-
-**Run all linters**
-
-```shell
-npm run lint
-```
-
-## Skipping linters
-
-If you need to skip a linter you can add the `--no-verify` flag.
-
-> Warning! We strongly advise against skipping linters.
-
-```shell
-# Skipping commitlint
-git commit README.md -m "this is a dirty commit" --no-verify
-# Skipping linters
-git push --no-verify
-```
+- React
+- Cloudinary
+- MUI
+- Styled-Components
+- Zustand
+- MongoDB
+- Axios
+- localStorage
+- React Hook Form
+- Next.js
+- Next-Auth.js
