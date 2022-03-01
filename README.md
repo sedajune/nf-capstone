@@ -2,6 +2,8 @@
 
 ![Plant Buddy Mockup](./src/ions/images/PlantBuddyMockup.png)
 
+https://user-images.githubusercontent.com/94977620/156158314-51494fe0-2e74-4c93-a88c-f967137bc3c8.mp4
+
 ## `Description`
 
 **This is a capstone project for [neuefische](https://www.neuefische.de/) web development bootcamp.**
